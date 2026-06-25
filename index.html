@@ -1,0 +1,1856 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shahed & Mostafa — 30 July 2026</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Montserrat:wght@300;400&family=Great+Vibes&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      :root {
+        --bg: #19271b;
+        --bg2: #1f3022;
+        --gold: #c9956a;
+        --gold2: #e8c49a;
+        --rose: #b07870;
+        --cream: #f0e6d3;
+        --text: #d4c4a8;
+        --kraft: #c8b88a;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Montserrat", sans-serif;
+        overflow-x: hidden;
+      }
+
+      /* ══ ENVELOPE SCREEN ══ */
+      #env-screen {
+        position: fixed;
+        inset: 0;
+        z-index: 200;
+        background: radial-gradient(
+          ellipse at 50% 40%,
+          #223024 0%,
+          #111a13 100%
+        );
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: clamp(30px, 6vh, 60px);
+        cursor: pointer;
+        overflow: hidden;
+      }
+
+      /* background botanical corner illustrations */
+      .bg-bot {
+        position: absolute;
+        pointer-events: none;
+        opacity: 0.55;
+      }
+      .bg-bot.tl {
+        top: 0;
+        left: 0;
+        width: clamp(130px, 30vw, 200px);
+      }
+      .bg-bot.tr {
+        top: 0;
+        right: 0;
+        width: clamp(130px, 30vw, 200px);
+        transform: scaleX(-1);
+      }
+      .bg-bot.bl {
+        bottom: 0;
+        left: 0;
+        width: clamp(100px, 24vw, 160px);
+        transform: scaleY(-1);
+      }
+      .bg-bot.br {
+        bottom: 0;
+        right: 0;
+        width: clamp(100px, 24vw, 160px);
+        transform: scale(-1);
+      }
+
+      /* monogram wreath */
+      .env-mono-wrap {
+        position: relative;
+        z-index: 5;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: clamp(8px, 2vh, 16px);
+        animation: fadeUp 0.9s 0.1s both;
+      }
+      .wreath-ring {
+        width: clamp(64px, 14vw, 88px);
+        height: clamp(64px, 14vw, 88px);
+        border-radius: 50%;
+        border: 1px solid rgba(201, 149, 106, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        margin-bottom: clamp(10px, 2vh, 18px);
+      }
+      .wreath-ring::before {
+        content: "";
+        position: absolute;
+        inset: 5px;
+        border-radius: 50%;
+        border: 1px solid rgba(201, 149, 106, 0.25);
+      }
+      .wreath-text {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(13px, 3vw, 18px);
+        letter-spacing: 5px;
+        color: var(--gold2);
+      }
+      /* small botanical ornament below ring */
+      .wreath-orn {
+        font-size: 12px;
+        color: var(--gold);
+        opacity: 0.7;
+        letter-spacing: 4px;
+      }
+
+      /* names block */
+      .env-names {
+        position: relative;
+        z-index: 5;
+        text-align: center;
+        animation: fadeUp 0.9s 0.2s both;
+        margin-bottom: clamp(12px, 3vh, 24px);
+      }
+      .env-with {
+        font-family: "Cormorant Garamond", serif;
+        font-style: italic;
+        font-size: clamp(14px, 3.5vw, 20px);
+        letter-spacing: 2px;
+        color: var(--gold2);
+        margin-bottom: 4px;
+      }
+      .env-name1,
+      .env-name2 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(40px, 10vw, 72px);
+        font-weight: 400;
+        color: var(--cream);
+        letter-spacing: 6px;
+        text-transform: uppercase;
+        line-height: 1;
+      }
+      .env-and {
+        font-family: "Great Vibes", cursive;
+        font-size: clamp(28px, 7vw, 48px);
+        color: var(--gold);
+        display: block;
+        line-height: 1.1;
+      }
+      /* small diamond ornament between names and envelope */
+      .env-orn {
+        text-align: center;
+        color: var(--gold);
+        font-size: 10px;
+        letter-spacing: 8px;
+        opacity: 0.7;
+        margin-bottom: clamp(8px, 2vh, 16px);
+        animation: fadeUp 0.9s 0.3s both;
+        position: relative;
+        z-index: 5;
+      }
+
+      /* ── THE ENVELOPE ── */
+      .env-wrap {
+        position: relative;
+        z-index: 5;
+        width: clamp(260px, 72vw, 380px);
+        flex-shrink: 0;
+        animation: fadeUp 0.9s 0.35s both;
+      }
+
+      /* card peeking out top */
+      .env-card {
+        position: relative;
+        width: 88%;
+        margin: 0 auto;
+        background: linear-gradient(170deg, #ddd3b8, #cec4a2);
+        border-radius: 3px 3px 0 0;
+        padding: clamp(14px, 4vw, 24px) clamp(14px, 4vw, 24px) 0;
+        min-height: clamp(100px, 22vw, 150px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+      }
+      /* botanical corners on card */
+      .card-corner {
+        position: absolute;
+        opacity: 0.35;
+      }
+      .card-corner.tl {
+        top: 4px;
+        left: 4px;
+        width: clamp(40px, 10vw, 60px);
+      }
+      .card-corner.tr {
+        top: 4px;
+        right: 4px;
+        width: clamp(40px, 10vw, 60px);
+        transform: scaleX(-1);
+      }
+      .card-corner.bl {
+        bottom: 0;
+        left: 4px;
+        width: clamp(35px, 8vw, 50px);
+        transform: scaleY(-1);
+      }
+      .card-corner.br {
+        bottom: 0;
+        right: 4px;
+        width: clamp(35px, 8vw, 50px);
+        transform: scale(-1);
+      }
+
+      .card-quote {
+        font-family: "Cormorant Garamond", serif;
+        font-style: italic;
+        font-size: clamp(11px, 2.8vw, 15px);
+        color: #4a3828;
+        text-align: center;
+        line-height: 1.8;
+        position: relative;
+        z-index: 2;
+        padding-top: 4px;
+      }
+      .card-src {
+        font-size: clamp(9px, 2.2vw, 12px);
+        color: #7a5a40;
+        margin-top: 4px;
+        letter-spacing: 1px;
+      }
+
+      /* envelope body */
+      .env-body {
+        position: relative;
+        background: linear-gradient(160deg, #c8b88a 0%, #b8a878 100%);
+        border-radius: 0 0 6px 6px;
+        overflow: hidden;
+        padding-bottom: clamp(40px, 10vw, 60px);
+      }
+      /* embossed botanical on envelope */
+      .env-emboss {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+      }
+
+      /* fold lines */
+      .env-fold-left,
+      .env-fold-right {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 0;
+        height: 0;
+      }
+      .env-fold-left {
+        left: 0;
+        border-top: clamp(60px, 16vw, 100px) solid transparent;
+        border-bottom: clamp(60px, 16vw, 100px) solid transparent;
+        border-left: clamp(90px, 22vw, 140px) solid rgba(0, 0, 0, 0.08);
+      }
+      .env-fold-right {
+        right: 0;
+        border-top: clamp(60px, 16vw, 100px) solid transparent;
+        border-bottom: clamp(60px, 16vw, 100px) solid transparent;
+        border-right: clamp(90px, 22vw, 140px) solid rgba(0, 0, 0, 0.06);
+      }
+      .env-fold-bottom {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 0;
+        width: 0;
+        border-left: clamp(130px, 36vw, 190px) solid transparent;
+        border-right: clamp(130px, 36vw, 190px) solid transparent;
+        border-bottom: clamp(50px, 13vw, 80px) solid rgba(0, 0, 0, 0.07);
+      }
+
+      /* wax seal */
+      .env-seal {
+        position: relative;
+        z-index: 10;
+        margin: clamp(10px, 3vw, 18px) auto 0;
+        width: clamp(52px, 13vw, 72px);
+        height: clamp(52px, 13vw, 72px);
+        border-radius: 50%;
+        background: radial-gradient(
+          circle at 38% 35%,
+          #e0a8a0,
+          #c47878,
+          #a85858
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow:
+          0 3px 16px rgba(0, 0, 0, 0.3),
+          inset 0 1px 3px rgba(255, 255, 255, 0.15);
+      }
+      .env-seal::before {
+        content: "";
+        position: absolute;
+        inset: 4px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+      }
+      /* leaf icon inside seal */
+      .seal-leaf {
+        font-size: clamp(16px, 4vw, 22px);
+        opacity: 0.85;
+      }
+
+      /* tap text on envelope */
+      .env-tap {
+        position: relative;
+        z-index: 5;
+        text-align: center;
+        padding: clamp(10px, 3vw, 16px) 0 clamp(6px, 2vw, 12px);
+      }
+      .env-tap p {
+        font-family: "Cormorant Garamond", serif;
+        font-style: italic;
+        font-size: clamp(13px, 3.2vw, 17px);
+        color: rgba(60, 44, 20, 0.65);
+        letter-spacing: 1px;
+      }
+      .env-tap-arrow {
+        display: block;
+        margin-top: 4px;
+        font-size: clamp(16px, 4vw, 20px);
+        color: rgba(60, 44, 20, 0.45);
+        animation: bob 2s ease-in-out infinite;
+      }
+      @keyframes bob {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(5px);
+        }
+      }
+
+      /* bottom ornament */
+      .env-bottom-orn {
+        position: relative;
+        z-index: 5;
+        margin-top: clamp(10px, 2.5vh, 20px);
+        text-align: center;
+        color: var(--gold);
+        font-size: 10px;
+        letter-spacing: 6px;
+        opacity: 0.6;
+        animation: fadeUp 0.9s 0.5s both;
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(16px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ══ MAIN CONTENT ══ */
+      #main {
+        display: none;
+      }
+
+      /* floating petals */
+      .petal {
+        position: fixed;
+        top: -20px;
+        pointer-events: none;
+        z-index: 1;
+        border-radius: 50% 0;
+        opacity: 0.55;
+        animation: pfall linear infinite;
+      }
+      @keyframes pfall {
+        0% {
+          transform: translateY(0) rotate(0deg) translateX(0);
+          opacity: 0.55;
+        }
+        50% {
+          transform: translateY(50vh) rotate(200deg) translateX(22px);
+        }
+        100% {
+          transform: translateY(110vh) rotate(400deg) translateX(-15px);
+          opacity: 0;
+        }
+      }
+
+      /* ── HERO ── */
+      .hero {
+        min-height: 100vh;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 3rem 2rem;
+        overflow: hidden;
+        background: radial-gradient(
+          ellipse at 50% 30%,
+          #223024 0%,
+          #111a13 100%
+        );
+      }
+      .hero-bot {
+        position: absolute;
+        pointer-events: none;
+        opacity: 0.5;
+      }
+      .hero-bot.tl {
+        top: 0;
+        left: 0;
+        width: clamp(140px, 32vw, 220px);
+      }
+      .hero-bot.tr {
+        top: 0;
+        right: 0;
+        width: clamp(140px, 32vw, 220px);
+        transform: scaleX(-1);
+      }
+      .hero-bot.bl {
+        bottom: 0;
+        left: 0;
+        width: clamp(120px, 26vw, 180px);
+        transform: scaleY(-1);
+      }
+      .hero-bot.br {
+        bottom: 0;
+        right: 0;
+        width: clamp(120px, 26vw, 180px);
+        transform: scale(-1);
+      }
+      /* right side floral spray */
+      .hero-bot.rt {
+        top: 20%;
+        right: 0;
+        width: clamp(80px, 18vw, 130px);
+      }
+
+      .hero-inner {
+        position: relative;
+        z-index: 2;
+      }
+      .hero-pre {
+        font-size: 10px;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: var(--gold);
+        opacity: 0.8;
+        margin-bottom: 1.8rem;
+        animation: fadeUp 0.8s 0.1s both;
+      }
+      .hero-wreath {
+        width: clamp(70px, 15vw, 96px);
+        height: clamp(70px, 15vw, 96px);
+        border-radius: 50%;
+        border: 1px solid rgba(201, 149, 106, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.8rem;
+        position: relative;
+        animation: fadeUp 0.8s 0.2s both;
+      }
+      .hero-wreath::before {
+        content: "";
+        position: absolute;
+        inset: 5px;
+        border-radius: 50%;
+        border: 1px solid rgba(201, 149, 106, 0.2);
+      }
+      .hero-wreath-text {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(14px, 3vw, 18px);
+        letter-spacing: 4px;
+        color: var(--gold2);
+      }
+      .hero-names-block {
+        animation: fadeUp 0.8s 0.3s both;
+      }
+      .hero-name {
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 400;
+        font-size: clamp(44px, 11vw, 80px);
+        color: var(--cream);
+        letter-spacing: 6px;
+        text-transform: uppercase;
+        line-height: 1.05;
+      }
+      .hero-and {
+        font-family: "Great Vibes", cursive;
+        font-size: clamp(32px, 8vw, 56px);
+        color: var(--gold);
+        display: block;
+        line-height: 1.1;
+      }
+      .hero-divider {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        max-width: 220px;
+        margin: 1.6rem auto 1.2rem;
+        animation: fadeUp 0.8s 0.4s both;
+      }
+      .hdl,
+      .hdr {
+        flex: 1;
+        height: 1px;
+      }
+      .hdl {
+        background: linear-gradient(to right, transparent, var(--gold));
+      }
+      .hdr {
+        background: linear-gradient(to left, transparent, var(--gold));
+      }
+      .hdc {
+        color: var(--gold);
+        font-size: 10px;
+      }
+      .hero-date {
+        font-size: 11px;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--gold2);
+        animation: fadeUp 0.8s 0.5s both;
+      }
+      .scroll-cue {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 9px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: rgba(212, 196, 168, 0.35);
+        animation: sdwn 2.5s infinite;
+      }
+      @keyframes sdwn {
+        0%,
+        100% {
+          opacity: 0.35;
+          transform: translateX(-50%) translateY(0);
+        }
+        50% {
+          opacity: 0.7;
+          transform: translateX(-50%) translateY(5px);
+        }
+      }
+
+      /* ── GENERIC SECTION ── */
+      .sec {
+        padding: clamp(3rem, 8vh, 5.5rem) 2rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .sec-inner {
+        max-width: 520px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .sec-bg1 {
+        background: radial-gradient(ellipse at 50% 50%, #1f3022, #111a13);
+      }
+      .sec-bg2 {
+        background: radial-gradient(ellipse at 50% 50%, #192419, #0f180f);
+      }
+
+      /* section ornament */
+      .sorn {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        max-width: 220px;
+        margin: 0 auto 1.8rem;
+      }
+      .sorn-l,
+      .sorn-r {
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(to right, transparent, var(--gold));
+      }
+      .sorn-r {
+        background: linear-gradient(to left, transparent, var(--gold));
+      }
+      .sorn-m {
+        color: var(--gold);
+        font-size: 11px;
+      }
+      .stitle {
+        font-family: "Cormorant Garamond", serif;
+        font-style: italic;
+        font-size: clamp(30px, 8vw, 46px);
+        font-weight: 300;
+        color: var(--cream);
+        margin-bottom: 0.3rem;
+      }
+      .ssub {
+        font-size: 9px;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--gold);
+        opacity: 0.75;
+        margin-bottom: 2.2rem;
+      }
+
+      /* botanical section corners */
+      .sec-bot {
+        position: absolute;
+        opacity: 0.2;
+        pointer-events: none;
+      }
+      .sec-bot.tl {
+        top: 0;
+        left: 0;
+        width: clamp(80px, 18vw, 130px);
+      }
+      .sec-bot.tr {
+        top: 0;
+        right: 0;
+        width: clamp(80px, 18vw, 130px);
+        transform: scaleX(-1);
+      }
+      .sec-bot.br {
+        bottom: 0;
+        right: 0;
+        width: clamp(80px, 18vw, 130px);
+        transform: scale(-1);
+      }
+      .sec-bot.bl {
+        bottom: 0;
+        left: 0;
+        width: clamp(80px, 18vw, 130px);
+        transform: scaleY(-1);
+      }
+
+      /* ── SAVE THE DATE ── */
+      .date-frame {
+        display: inline-block;
+        border: 1px solid rgba(201, 149, 106, 0.35);
+        padding: clamp(1.5rem, 5vw, 2.5rem) clamp(2rem, 7vw, 4rem);
+        position: relative;
+        margin: 0.5rem 0 1.5rem;
+      }
+      .date-frame::before,
+      .date-frame::after,
+      .date-corners::before,
+      .date-corners::after {
+        content: "";
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        border: 1px solid var(--gold);
+      }
+      .date-frame::before {
+        top: -1px;
+        left: -1px;
+        border-right: none;
+        border-bottom: none;
+      }
+      .date-frame::after {
+        bottom: -1px;
+        right: -1px;
+        border-left: none;
+        border-top: none;
+      }
+      .date-corners::before {
+        top: -1px;
+        right: -1px;
+        border-left: none;
+        border-bottom: none;
+      }
+      .date-corners::after {
+        bottom: -1px;
+        left: -1px;
+        border-right: none;
+        border-top: none;
+      }
+      .date-num {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(60px, 16vw, 90px);
+        font-weight: 300;
+        color: var(--gold2);
+        line-height: 1;
+      }
+      .date-mo {
+        font-size: 11px;
+        letter-spacing: 7px;
+        text-transform: uppercase;
+        color: var(--gold);
+      }
+      .date-yr {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(22px, 6vw, 32px);
+        font-weight: 300;
+        color: var(--cream);
+      }
+      .date-note {
+        font-family: "Cormorant Garamond", serif;
+        font-style: italic;
+        font-size: clamp(14px, 3.5vw, 17px);
+        color: var(--text);
+        margin-top: 1rem;
+      }
+
+      /* ── LOCATION ── */
+      .loc-name {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(42px, 11vw, 64px);
+        font-weight: 300;
+        color: var(--cream);
+        margin: 0.8rem 0 0.4rem;
+        line-height: 1;
+      }
+      .loc-sub {
+        font-size: 11px;
+        color: var(--text);
+        letter-spacing: 1px;
+        line-height: 2;
+        margin-bottom: 2rem;
+        font-family: "Cormorant Garamond", serif;
+        font-style: italic;
+        font-size: 16px;
+      }
+      .loc-btn {
+        display: inline-block;
+        padding: 11px 32px;
+        border: 1px solid var(--gold);
+        color: var(--gold);
+        font-size: 9px;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+      .loc-btn:hover {
+        background: var(--gold);
+        color: #111a13;
+      }
+
+      /* ── PROGRAM ── */
+      .prog-list {
+        list-style: none;
+        text-align: left;
+        max-width: 340px;
+        margin: 0 auto;
+      }
+      .prog-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1rem 0;
+        border-bottom: 1px solid rgba(201, 149, 106, 0.12);
+      }
+      .prog-item:last-child {
+        border-bottom: none;
+      }
+      .prog-time {
+        font-size: 9px;
+        letter-spacing: 2px;
+        color: var(--gold);
+        min-width: 44px;
+        padding-top: 3px;
+        text-transform: uppercase;
+      }
+      .prog-icon {
+        font-size: 16px;
+        min-width: 22px;
+        text-align: center;
+        opacity: 0.8;
+      }
+      .prog-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 18px;
+        color: var(--cream);
+      }
+      .prog-desc {
+        font-size: 10px;
+        color: var(--gold);
+        opacity: 0.7;
+        margin-top: 0.1rem;
+        letter-spacing: 0.5px;
+      }
+
+      /* ── COUNTDOWN ── */
+      .cd-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+        max-width: 360px;
+        margin: 0 auto;
+      }
+      .cd-box {
+        border: 1px solid rgba(201, 149, 106, 0.2);
+        padding: 1.4rem 0.4rem;
+        background: rgba(255, 255, 255, 0.025);
+      }
+      .cd-num {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(34px, 9vw, 52px);
+        font-weight: 300;
+        color: var(--gold2);
+        line-height: 1;
+      }
+      .cd-lbl {
+        font-size: 7px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: rgba(212, 196, 168, 0.4);
+        margin-top: 0.3rem;
+      }
+
+      /* ── RSVP ── */
+      .rsvp-quote {
+        font-family: "Cormorant Garamond", serif;
+        font-style: italic;
+        font-size: clamp(16px, 4vw, 20px);
+        color: var(--gold2);
+        margin-bottom: 1.5rem;
+        line-height: 1.7;
+      }
+      .rsvp-form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.9rem;
+        max-width: 300px;
+        margin: 0 auto;
+      }
+      .rsvp-form input,
+      .rsvp-form select {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(201, 149, 106, 0.22);
+        color: var(--cream);
+        padding: 12px 15px;
+        font-family: "Montserrat", sans-serif;
+        font-size: 11px;
+        outline: none;
+        transition: border-color 0.3s;
+      }
+      .rsvp-form input::placeholder {
+        color: rgba(212, 196, 168, 0.35);
+      }
+      .rsvp-form input:focus,
+      .rsvp-form select:focus {
+        border-color: var(--gold);
+      }
+      .rsvp-form select option {
+        background: #19271b;
+      }
+      .rsvp-btn {
+        padding: 13px;
+        background: transparent;
+        border: 1px solid var(--gold);
+        color: var(--gold);
+        font-family: "Montserrat", sans-serif;
+        font-size: 9px;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      .rsvp-btn:hover {
+        background: var(--gold);
+        color: #111a13;
+      }
+      #rsvp-ok {
+        display: none;
+        font-family: "Cormorant Garamond", serif;
+        font-style: italic;
+        font-size: 20px;
+        color: var(--gold2);
+      }
+
+      /* ── FOOTER ── */
+      footer {
+        padding: 3rem 2rem;
+        text-align: center;
+        background: #0e160f;
+        border-top: 1px solid rgba(201, 149, 106, 0.1);
+      }
+      .foot-names {
+        font-family: "Great Vibes", cursive;
+        font-size: clamp(36px, 9vw, 52px);
+        color: var(--gold2);
+      }
+      .foot-info {
+        font-size: 9px;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: rgba(212, 196, 168, 0.25);
+        margin-top: 0.5rem;
+      }
+      .foot-verse {
+        font-family: "Cormorant Garamond", serif;
+        font-style: italic;
+        font-size: 13px;
+        color: rgba(212, 196, 168, 0.35);
+        margin-top: 1.2rem;
+        line-height: 1.9;
+      }
+
+      /* reveal on scroll */
+      .rev {
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 0.9s,
+          transform 0.9s;
+      }
+      .rev.vis {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ══════════════════════════════
+     BOTANICAL SVG DEFS (reusable)
+══════════════════════════════ -->
+    <!-- Corner botanical SVG template used via img-like inline SVGs -->
+
+    <!-- ══ ENVELOPE SCREEN ══ -->
+    <div id="env-screen">
+      <!-- background botanical corners -->
+      <svg
+        class="bg-bot tl"
+        viewBox="0 0 200 240"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g stroke="#c9956a" stroke-width="1.1" fill="none">
+          <path d="M10 230 Q10 10 190 10" />
+          <path d="M10 180 Q40 140 80 100 Q120 60 170 20" />
+          <path d="M80 100 Q70 78 84 68" />
+          <ellipse
+            cx="84"
+            cy="62"
+            rx="7"
+            ry="11"
+            fill="#c9956a"
+            opacity=".4"
+            transform="rotate(-20 84 62)"
+          />
+          <path d="M80 100 Q95 88 95 72" />
+          <ellipse
+            cx="96"
+            cy="66"
+            rx="6"
+            ry="10"
+            fill="#c9956a"
+            opacity=".3"
+            transform="rotate(15 96 66)"
+          />
+          <circle cx="14" cy="14" r="4" fill="#c9956a" />
+          <path d="M40 10 Q44 30 56 26 Q48 38 62 34" />
+          <ellipse
+            cx="56"
+            cy="22"
+            rx="6"
+            ry="10"
+            fill="#c9956a"
+            opacity=".35"
+            transform="rotate(-15 56 22)"
+          />
+          <path d="M10 120 Q30 110 40 92 Q36 104 50 98" />
+          <ellipse
+            cx="52"
+            cy="94"
+            rx="7"
+            ry="5"
+            fill="#c9956a"
+            opacity=".3"
+            transform="rotate(-30 52 94)"
+          />
+          <!-- flower -->
+          <circle cx="140" cy="50" r="10" />
+          <circle cx="140" cy="50" r="5" />
+          <circle cx="140" cy="50" r="2.5" fill="#c9956a" opacity=".5" />
+          <line x1="140" y1="34" x2="140" y2="22" />
+          <ellipse cx="140" cy="18" rx="5" ry="8" fill="#c9956a" opacity=".4" />
+          <line x1="130" y1="42" x2="120" y2="34" />
+          <ellipse
+            cx="117"
+            cy="31"
+            rx="5"
+            ry="8"
+            fill="#c9956a"
+            opacity=".35"
+            transform="rotate(-45 117 31)"
+          />
+        </g>
+      </svg>
+      <svg
+        class="bg-bot tr"
+        viewBox="0 0 200 240"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g stroke="#c9956a" stroke-width="1.1" fill="none">
+          <path d="M10 230 Q10 10 190 10" />
+          <path d="M10 180 Q40 140 80 100 Q120 60 170 20" />
+          <path d="M80 100 Q70 78 84 68" />
+          <ellipse
+            cx="84"
+            cy="62"
+            rx="7"
+            ry="11"
+            fill="#c9956a"
+            opacity=".4"
+            transform="rotate(-20 84 62)"
+          />
+          <circle cx="14" cy="14" r="4" fill="#c9956a" />
+          <path d="M40 10 Q44 30 56 26" />
+          <ellipse
+            cx="56"
+            cy="22"
+            rx="6"
+            ry="10"
+            fill="#c9956a"
+            opacity=".35"
+            transform="rotate(-15 56 22)"
+          />
+          <circle cx="140" cy="50" r="10" />
+          <circle cx="140" cy="50" r="5" />
+          <circle cx="140" cy="50" r="2.5" fill="#c9956a" opacity=".5" />
+          <line x1="140" y1="34" x2="140" y2="22" />
+          <ellipse cx="140" cy="18" rx="5" ry="8" fill="#c9956a" opacity=".4" />
+        </g>
+      </svg>
+      <svg
+        class="bg-bot bl"
+        viewBox="0 0 200 240"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g stroke="#c9956a" stroke-width="1" fill="none">
+          <path d="M10 230 Q10 10 190 10" />
+          <circle cx="14" cy="14" r="3.5" fill="#c9956a" />
+          <path d="M10 120 Q30 100 44 80 Q40 96 56 88" />
+          <ellipse
+            cx="58"
+            cy="84"
+            rx="7"
+            ry="5"
+            fill="#c9956a"
+            opacity=".3"
+            transform="rotate(-30 58 84)"
+          />
+        </g>
+      </svg>
+      <svg
+        class="bg-bot br"
+        viewBox="0 0 200 240"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g stroke="#c9956a" stroke-width="1" fill="none">
+          <path d="M10 230 Q10 10 190 10" />
+          <circle cx="14" cy="14" r="3.5" fill="#c9956a" />
+        </g>
+      </svg>
+
+      <!-- monogram + wreath -->
+      <div class="env-mono-wrap">
+        <div class="wreath-ring">
+          <span class="wreath-text">S | M</span>
+        </div>
+        <span class="wreath-orn">— ✦ —</span>
+      </div>
+
+      <!-- names -->
+      <div class="env-names">
+        <p class="env-with">With great joy</p>
+        <div class="env-name1">Shahed</div>
+        <div class="env-and">and</div>
+        <div class="env-name2">Mostafa</div>
+      </div>
+
+      <!-- diamond ornament -->
+      <div class="env-orn">— ◆ —</div>
+
+      <!-- envelope -->
+      <div class="env-wrap">
+        <!-- card peeking out -->
+        <div class="env-card">
+          <!-- botanical corners on card (SVG) -->
+          <svg
+            class="card-corner tl"
+            viewBox="0 0 60 80"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g stroke="#8a7a58" stroke-width="1" fill="none" opacity=".6">
+              <path d="M4 76 Q4 4 56 4" />
+              <path d="M4 50 Q18 34 30 10" />
+              <path d="M30 10 Q28 22 36 18" />
+              <ellipse
+                cx="36"
+                cy="14"
+                rx="5"
+                ry="8"
+                fill="#8a7a58"
+                opacity=".4"
+                transform="rotate(-15 36 14)"
+              />
+              <circle cx="4" cy="4" r="2.5" fill="#8a7a58" />
+              <path d="M20 6 Q22 16 28 14" />
+              <ellipse
+                cx="28"
+                cy="10"
+                rx="4"
+                ry="7"
+                fill="#8a7a58"
+                opacity=".3"
+                transform="rotate(-10 28 10)"
+              />
+            </g>
+          </svg>
+          <svg
+            class="card-corner tr"
+            viewBox="0 0 60 80"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g stroke="#8a7a58" stroke-width="1" fill="none" opacity=".6">
+              <path d="M4 76 Q4 4 56 4" />
+              <path d="M4 50 Q18 34 30 10" />
+              <circle cx="4" cy="4" r="2.5" fill="#8a7a58" />
+              <!-- small flower -->
+              <circle cx="46" cy="30" r="7" />
+              <circle cx="46" cy="30" r="3.5" />
+              <circle cx="46" cy="30" r="1.5" fill="#8a7a58" opacity=".5" />
+              <line x1="46" y1="17" x2="46" y2="8" />
+              <ellipse
+                cx="46"
+                cy="5"
+                rx="4"
+                ry="6"
+                fill="#8a7a58"
+                opacity=".35"
+              />
+            </g>
+          </svg>
+          <p class="card-quote">
+            "I have found the one<br />whom my soul loves."
+            <span class="card-src"><br />— Song of Solomon 3:4</span>
+          </p>
+        </div>
+
+        <!-- envelope body -->
+        <div class="env-body">
+          <!-- embossed botanical SVG -->
+          <svg
+            class="env-emboss"
+            viewBox="0 0 380 160"
+            preserveAspectRatio="xMidYMid slice"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g stroke="rgba(255,255,255,0.18)" stroke-width="1" fill="none">
+              <!-- left botanical -->
+              <path d="M30 80 Q50 55 70 65 Q50 72 78 68" />
+              <path d="M30 80 Q20 100 15 120" />
+              <ellipse
+                cx="80"
+                cy="64"
+                rx="9"
+                ry="6"
+                fill="rgba(255,255,255,.12)"
+                transform="rotate(-20 80 64)"
+              />
+              <ellipse
+                cx="14"
+                cy="122"
+                rx="7"
+                ry="5"
+                fill="rgba(255,255,255,.1)"
+              />
+              <circle cx="30" cy="80" r="3" fill="rgba(255,255,255,.2)" />
+              <!-- left flower -->
+              <circle cx="55" cy="120" r="10" />
+              <circle cx="55" cy="120" r="5" />
+              <circle cx="55" cy="120" r="2.5" fill="rgba(255,255,255,.2)" />
+              <line x1="55" y1="104" x2="55" y2="90" />
+              <ellipse
+                cx="55"
+                cy="86"
+                rx="5"
+                ry="8"
+                fill="rgba(255,255,255,.12)"
+              />
+              <line x1="45" y1="112" x2="36" y2="104" />
+              <ellipse
+                cx="32"
+                cy="100"
+                rx="5"
+                ry="7"
+                fill="rgba(255,255,255,.1)"
+                transform="rotate(-40 32 100)"
+              />
+              <!-- right botanical -->
+              <path d="M350 80 Q330 55 310 65 Q330 72 302 68" />
+              <path d="M350 80 Q360 100 365 120" />
+              <ellipse
+                cx="300"
+                cy="64"
+                rx="9"
+                ry="6"
+                fill="rgba(255,255,255,.12)"
+                transform="rotate(20 300 64)"
+              />
+              <circle cx="350" cy="80" r="3" fill="rgba(255,255,255,.2)" />
+              <!-- right flower -->
+              <circle cx="325" cy="120" r="10" />
+              <circle cx="325" cy="120" r="5" />
+              <circle cx="325" cy="120" r="2.5" fill="rgba(255,255,255,.2)" />
+              <line x1="325" y1="104" x2="325" y2="90" />
+              <ellipse
+                cx="325"
+                cy="86"
+                rx="5"
+                ry="8"
+                fill="rgba(255,255,255,.12)"
+              />
+              <!-- fold lines -->
+              <line
+                x1="0"
+                y1="0"
+                x2="190"
+                y2="90"
+                stroke="rgba(0,0,0,.08)"
+                stroke-width="1.5"
+              />
+              <line
+                x1="380"
+                y1="0"
+                x2="190"
+                y2="90"
+                stroke="rgba(0,0,0,.07)"
+                stroke-width="1.5"
+              />
+            </g>
+          </svg>
+
+          <div class="env-fold-left"></div>
+          <div class="env-fold-right"></div>
+          <div class="env-fold-bottom"></div>
+
+          <!-- wax seal -->
+          <div style="display: flex; justify-content: center">
+            <div class="env-seal">
+              <span class="seal-leaf">🌿</span>
+            </div>
+          </div>
+
+          <!-- tap to open -->
+          <div class="env-tap">
+            <p>Tap to open</p>
+            <span class="env-tap-arrow">↕</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- bottom ornament -->
+      <div class="env-bottom-orn">— ◆ —</div>
+    </div>
+    <!-- /env-screen -->
+
+    <!-- ══ MAIN INVITATION ══ -->
+    <div id="main">
+      <!-- HERO -->
+      <div class="hero">
+        <svg
+          class="hero-bot tl"
+          viewBox="0 0 220 260"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g stroke="#c9956a" stroke-width="1.1" fill="none">
+            <path d="M10 250 Q10 10 210 10" />
+            <path d="M10 160 Q50 120 90 80 Q130 40 180 14" />
+            <path d="M90 80 Q80 60 94 50" />
+            <ellipse
+              cx="95"
+              cy="44"
+              rx="7"
+              ry="12"
+              fill="#c9956a"
+              opacity=".4"
+              transform="rotate(-20 95 44)"
+            />
+            <circle cx="13" cy="13" r="4" fill="#c9956a" />
+            <circle cx="150" cy="44" r="11" />
+            <circle cx="150" cy="44" r="5.5" />
+            <circle cx="150" cy="44" r="2.5" fill="#c9956a" opacity=".5" />
+            <line x1="150" y1="26" x2="150" y2="14" />
+            <ellipse
+              cx="150"
+              cy="10"
+              rx="5"
+              ry="8"
+              fill="#c9956a"
+              opacity=".4"
+            />
+            <line x1="139" y1="35" x2="128" y2="26" />
+            <ellipse
+              cx="124"
+              cy="22"
+              rx="5"
+              ry="8"
+              fill="#c9956a"
+              opacity=".35"
+              transform="rotate(-45 124 22)"
+            />
+            <line x1="161" y1="35" x2="172" y2="26" />
+            <ellipse
+              cx="176"
+              cy="22"
+              rx="5"
+              ry="8"
+              fill="#c9956a"
+              opacity=".35"
+              transform="rotate(45 176 22)"
+            />
+          </g>
+        </svg>
+        <svg
+          class="hero-bot tr"
+          viewBox="0 0 220 260"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g stroke="#c9956a" stroke-width="1.1" fill="none">
+            <path d="M10 250 Q10 10 210 10" />
+            <path d="M10 160 Q50 120 90 80 Q130 40 180 14" />
+            <ellipse
+              cx="95"
+              cy="44"
+              rx="7"
+              ry="12"
+              fill="#c9956a"
+              opacity=".4"
+              transform="rotate(-20 95 44)"
+            />
+            <circle cx="13" cy="13" r="4" fill="#c9956a" />
+            <circle cx="150" cy="44" r="11" />
+            <circle cx="150" cy="44" r="5.5" />
+            <circle cx="150" cy="44" r="2.5" fill="#c9956a" opacity=".5" />
+            <line x1="150" y1="26" x2="150" y2="14" />
+            <ellipse
+              cx="150"
+              cy="10"
+              rx="5"
+              ry="8"
+              fill="#c9956a"
+              opacity=".4"
+            />
+          </g>
+        </svg>
+        <svg
+          class="hero-bot bl"
+          viewBox="0 0 220 260"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g stroke="#c9956a" stroke-width="1" fill="none">
+            <path d="M10 250 Q10 10 210 10" />
+            <circle cx="13" cy="13" r="4" fill="#c9956a" />
+            <path d="M10 140 Q35 115 52 88 Q48 105 64 96" />
+            <ellipse
+              cx="66"
+              cy="91"
+              rx="8"
+              ry="5"
+              fill="#c9956a"
+              opacity=".3"
+              transform="rotate(-30 66 91)"
+            />
+          </g>
+        </svg>
+        <svg
+          class="hero-bot br"
+          viewBox="0 0 220 260"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g stroke="#c9956a" stroke-width="1" fill="none">
+            <path d="M10 250 Q10 10 210 10" />
+            <circle cx="13" cy="13" r="4" fill="#c9956a" />
+          </g>
+        </svg>
+        <!-- right side tall floral spray -->
+        <svg
+          class="hero-bot rt"
+          viewBox="0 0 130 320"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g stroke="#c9956a" stroke-width="1" fill="none">
+            <path d="M65 310 Q60 240 70 180 Q75 120 60 60" />
+            <path d="M70 180 Q90 165 100 145" />
+            <ellipse
+              cx="102"
+              cy="140"
+              rx="7"
+              ry="11"
+              fill="#c9956a"
+              opacity=".35"
+              transform="rotate(20 102 140)"
+            />
+            <path d="M65 240 Q45 225 38 205" />
+            <ellipse
+              cx="35"
+              cy="200"
+              rx="7"
+              ry="11"
+              fill="#c9956a"
+              opacity=".3"
+              transform="rotate(-20 35 200)"
+            />
+            <circle cx="60" cy="60" r="12" />
+            <circle cx="60" cy="60" r="6" />
+            <circle cx="60" cy="60" r="2.5" fill="#c9956a" opacity=".5" />
+            <line x1="60" y1="40" x2="60" y2="26" />
+            <ellipse
+              cx="60"
+              cy="22"
+              rx="5"
+              ry="9"
+              fill="#c9956a"
+              opacity=".4"
+            />
+            <path d="M60 60 Q78 48 88 30" />
+            <ellipse
+              cx="90"
+              cy="26"
+              rx="5"
+              ry="8"
+              fill="#c9956a"
+              opacity=".35"
+              transform="rotate(20 90 26)"
+            />
+            <path d="M60 60 Q42 48 32 30" />
+            <ellipse
+              cx="30"
+              cy="26"
+              rx="5"
+              ry="8"
+              fill="#c9956a"
+              opacity=".35"
+              transform="rotate(-20 30 26)"
+            />
+          </g>
+        </svg>
+
+        <div class="hero-inner">
+          <p class="hero-pre">you are cordially invited to celebrate</p>
+          <div class="hero-wreath">
+            <span class="hero-wreath-text">S | M</span>
+          </div>
+          <div class="hero-names-block">
+            <div class="hero-name">Shahed</div>
+            <span class="hero-and">and</span>
+            <div class="hero-name">Mostafa</div>
+          </div>
+          <div class="hero-divider">
+            <div class="hdl"></div>
+            <div class="hdc">◆</div>
+            <div class="hdr"></div>
+          </div>
+          <p class="hero-date">30 · July · 2026 &nbsp;·&nbsp; Lebanon</p>
+        </div>
+        <p class="scroll-cue">scroll ↓</p>
+      </div>
+
+      <!-- SAVE THE DATE -->
+      <div class="sec sec-bg1 rev">
+        <svg
+          class="sec-bot tl"
+          viewBox="0 0 130 130"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g stroke="#c9956a" stroke-width="1" fill="none">
+            <path d="M5 125 Q5 5 125 5" />
+            <circle cx="8" cy="8" r="3" fill="#c9956a" />
+            <circle cx="80" cy="32" r="8" />
+            <circle cx="80" cy="32" r="4" />
+            <line x1="80" y1="20" x2="80" y2="10" />
+            <ellipse cx="80" cy="7" rx="4" ry="6" fill="#c9956a" opacity=".4" />
+          </g>
+        </svg>
+        <svg
+          class="sec-bot tr"
+          viewBox="0 0 130 130"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g stroke="#c9956a" stroke-width="1" fill="none">
+            <path d="M5 125 Q5 5 125 5" />
+            <circle cx="8" cy="8" r="3" fill="#c9956a" />
+          </g>
+        </svg>
+        <div class="sec-inner">
+          <div class="sorn">
+            <div class="sorn-l"></div>
+            <div class="sorn-m">✦</div>
+            <div class="sorn-r"></div>
+          </div>
+          <h2 class="stitle">Save the Date</h2>
+          <p class="ssub">mark your calendar</p>
+          <div class="date-frame">
+            <div class="date-corners"></div>
+            <div class="date-num">30</div>
+            <div class="date-mo">July</div>
+            <div class="date-yr">2026</div>
+          </div>
+          <p class="date-note">Thursday — Ceremony at 4:00 PM</p>
+        </div>
+      </div>
+
+      <!-- LOCATION -->
+      <div class="sec sec-bg2 rev">
+        <svg
+          class="sec-bot bl"
+          viewBox="0 0 130 130"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g stroke="#c9956a" stroke-width="1" fill="none">
+            <path d="M5 125 Q5 5 125 5" />
+            <circle cx="8" cy="8" r="3" fill="#c9956a" />
+          </g>
+        </svg>
+        <svg
+          class="sec-bot br"
+          viewBox="0 0 130 130"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g stroke="#c9956a" stroke-width="1" fill="none">
+            <path d="M5 125 Q5 5 125 5" />
+            <circle cx="8" cy="8" r="3" fill="#c9956a" />
+          </g>
+        </svg>
+        <div class="sec-inner">
+          <div class="sorn">
+            <div class="sorn-l"></div>
+            <div class="sorn-m">✦</div>
+            <div class="sorn-r"></div>
+          </div>
+          <h2 class="stitle">Location</h2>
+          <p class="ssub">where we say "I do"</p>
+          <div style="font-size: 22px; margin-bottom: 0.5rem">📍</div>
+          <div class="loc-name">Lebanon</div>
+          <p class="loc-sub">
+            The exact venue details<br />will be shared soon
+          </p>
+          <a
+            class="loc-btn"
+            href="https://maps.google.com/?q=Lebanon"
+            target="_blank"
+            >View Map</a
+          >
+        </div>
+      </div>
+
+      <!-- PROGRAM -->
+      <div class="sec sec-bg1 rev">
+        <svg
+          class="sec-bot tl"
+          viewBox="0 0 130 130"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g stroke="#c9956a" stroke-width="1" fill="none">
+            <path d="M5 125 Q5 5 125 5" />
+            <circle cx="8" cy="8" r="3" fill="#c9956a" />
+          </g>
+        </svg>
+        <div class="sec-inner">
+          <div class="sorn">
+            <div class="sorn-l"></div>
+            <div class="sorn-m">✦</div>
+            <div class="sorn-r"></div>
+          </div>
+          <h2 class="stitle">Day Program</h2>
+          <p class="ssub">what we have planned for you</p>
+          <ul class="prog-list">
+            <li class="prog-item">
+              <div class="prog-time">16:00</div>
+              <div class="prog-icon">💍</div>
+              <div>
+                <div class="prog-title">Ceremony</div>
+                <div class="prog-desc">The moment we become one</div>
+              </div>
+            </li>
+            <li class="prog-item">
+              <div class="prog-time">17:30</div>
+              <div class="prog-icon">🥂</div>
+              <div>
+                <div class="prog-title">Welcome Cocktail</div>
+                <div class="prog-desc">Drinks & welcome reception</div>
+              </div>
+            </li>
+            <li class="prog-item">
+              <div class="prog-time">19:00</div>
+              <div class="prog-icon">🌹</div>
+              <div>
+                <div class="prog-title">Wedding Dinner</div>
+                <div class="prog-desc">A feast to celebrate love</div>
+              </div>
+            </li>
+            <li class="prog-item">
+              <div class="prog-time">21:00</div>
+              <div class="prog-icon">🎶</div>
+              <div>
+                <div class="prog-title">First Dance & Music</div>
+                <div class="prog-desc">Dance the night away</div>
+              </div>
+            </li>
+            <li class="prog-item">
+              <div class="prog-time">Late ✨</div>
+              <div class="prog-icon">🌙</div>
+              <div>
+                <div class="prog-title">Celebrations</div>
+                <div class="prog-desc">Until the stars fade away</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- COUNTDOWN -->
+      <div class="sec sec-bg2 rev">
+        <svg
+          class="sec-bot br"
+          viewBox="0 0 130 130"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g stroke="#c9956a" stroke-width="1" fill="none">
+            <path d="M5 125 Q5 5 125 5" />
+            <circle cx="8" cy="8" r="3" fill="#c9956a" />
+          </g>
+        </svg>
+        <div class="sec-inner">
+          <div class="sorn">
+            <div class="sorn-l"></div>
+            <div class="sorn-m">✦</div>
+            <div class="sorn-r"></div>
+          </div>
+          <h2 class="stitle">Countdown</h2>
+          <p class="ssub">to the most beautiful day</p>
+          <div class="cd-grid">
+            <div class="cd-box">
+              <div class="cd-num" id="cd-d">--</div>
+              <div class="cd-lbl">Days</div>
+            </div>
+            <div class="cd-box">
+              <div class="cd-num" id="cd-h">--</div>
+              <div class="cd-lbl">Hours</div>
+            </div>
+            <div class="cd-box">
+              <div class="cd-num" id="cd-m">--</div>
+              <div class="cd-lbl">Min</div>
+            </div>
+            <div class="cd-box">
+              <div class="cd-num" id="cd-s">--</div>
+              <div class="cd-lbl">Sec</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RSVP -->
+      <div class="sec sec-bg1 rev">
+        <svg
+          class="sec-bot tl"
+          viewBox="0 0 130 130"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g stroke="#c9956a" stroke-width="1" fill="none">
+            <path d="M5 125 Q5 5 125 5" />
+            <circle cx="8" cy="8" r="3" fill="#c9956a" />
+          </g>
+        </svg>
+        <svg
+          class="sec-bot br"
+          viewBox="0 0 130 130"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g stroke="#c9956a" stroke-width="1" fill="none">
+            <path d="M5 125 Q5 5 125 5" />
+            <circle cx="8" cy="8" r="3" fill="#c9956a" />
+          </g>
+        </svg>
+        <div class="sec-inner">
+          <div class="sorn">
+            <div class="sorn-l"></div>
+            <div class="sorn-m">✦</div>
+            <div class="sorn-r"></div>
+          </div>
+          <h2 class="stitle">Join Us</h2>
+          <p class="ssub">kindly reply before 15 July 2026</p>
+          <p class="rsvp-quote">"Your presence means<br />the world to us."</p>
+          <div class="rsvp-form" id="rsvpForm">
+            <input type="text" id="rn" placeholder="Your full name" />
+            <select id="ra">
+              <option value="">Will you attend?</option>
+              <option value="yes">Joyfully accepts ✓</option>
+              <option value="no">Regretfully declines</option>
+            </select>
+            <input
+              type="number"
+              id="rg"
+              placeholder="Number of guests"
+              min="1"
+              max="10"
+            />
+            <input type="text" id="rm" placeholder="Message (optional)" />
+            <button class="rsvp-btn" onclick="doRSVP()">
+              Send RSVP &nbsp;✦
+            </button>
+          </div>
+          <div id="rsvp-ok">
+            ✦ &nbsp;Thank you — we cannot wait to celebrate with you!&nbsp; ✦
+          </div>
+        </div>
+      </div>
+
+      <!-- FOOTER -->
+      <footer>
+        <div class="foot-names">Shahed & Mostafa</div>
+        <p class="foot-info">30 · July · 2026 · Lebanon</p>
+        <p class="foot-verse">
+          "And He placed between you affection and mercy."<br />
+          <span style="font-size: 11px; letter-spacing: 2px"
+            >— Quran 30:21</span
+          >
+        </p>
+      </footer>
+    </div>
+    <!-- /main -->
+
+    <script>
+      // ── Petals ──
+      const pc = ["#c9956a", "#e8c49a", "#b07870", "#8a9e8c", "#d4c4a8"];
+      for (let i = 0; i < 16; i++) {
+        const p = document.createElement("div");
+        p.className = "petal";
+        const s = 5 + Math.random() * 8;
+        p.style.cssText =
+          `width:${s}px;height:${s * 1.6}px;left:${Math.random() * 100}vw;` +
+          `animation-duration:${8 + Math.random() * 12}s;animation-delay:${Math.random() * 14}s;` +
+          `background:${pc[Math.floor(Math.random() * pc.length)]};transform:rotate(${Math.random() * 360}deg)`;
+        document.body.appendChild(p);
+      }
+
+      // ── Open envelope ──
+      let opened = false;
+      document.getElementById("env-screen").addEventListener("click", () => {
+        if (opened) return;
+        opened = true;
+        const s = document.getElementById("env-screen");
+        s.style.transition = "opacity 1s";
+        s.style.opacity = "0";
+        setTimeout(() => {
+          s.style.display = "none";
+          const m = document.getElementById("main");
+          m.style.display = "block";
+          window.scrollTo(0, 0);
+          initReveal();
+          startCountdown();
+        }, 1000);
+      });
+
+      // ── Scroll reveal ──
+      function initReveal() {
+        const obs = new IntersectionObserver(
+          (en) => {
+            en.forEach((e) => {
+              if (e.isIntersecting) e.target.classList.add("vis");
+            });
+          },
+          { threshold: 0.1 },
+        );
+        document.querySelectorAll(".rev").forEach((el) => obs.observe(el));
+      }
+
+      // ── Countdown ──
+      function startCountdown() {
+        const t = new Date("2026-07-30T16:00:00");
+        function tick() {
+          const d = t - new Date();
+          if (d <= 0) {
+            ["d", "h", "m", "s"].forEach(
+              (x) => (document.getElementById("cd-" + x).textContent = "0"),
+            );
+            return;
+          }
+          document.getElementById("cd-d").textContent = Math.floor(
+            d / 86400000,
+          );
+          document.getElementById("cd-h").textContent = Math.floor(
+            (d % 86400000) / 3600000,
+          );
+          document.getElementById("cd-m").textContent = Math.floor(
+            (d % 3600000) / 60000,
+          );
+          document.getElementById("cd-s").textContent = Math.floor(
+            (d % 60000) / 1000,
+          );
+        }
+        tick();
+        setInterval(tick, 1000);
+      }
+
+      // ── RSVP ──
+      function doRSVP() {
+        const n = document.getElementById("rn").value;
+        const a = document.getElementById("ra").value;
+        if (!n || !a) {
+          alert("Please fill in your name and attendance.");
+          return;
+        }
+        document.getElementById("rsvpForm").style.display = "none";
+        document.getElementById("rsvp-ok").style.display = "block";
+      }
+    </script>
+  </body>
+</html>
