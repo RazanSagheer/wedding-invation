@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shahed & Mostafa — 30 July 2026</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Montserrat:wght@300;400&family=Great+Vibes&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Montserrat:wght@300;400&family=Great+Vibes&family=Pinyon+Script&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -15,525 +15,563 @@
         box-sizing: border-box;
       }
       :root {
-        --bg: #19271b;
-        --bg2: #1f3022;
-        --gold: #c9956a;
-        --gold2: #e8c49a;
-        --rose: #b07870;
-        --cream: #f0e6d3;
-        --text: #d4c4a8;
-        --kraft: #c8b88a;
+        --olive: #6b7b52;
+        --dark: #1a2718;
+        --dark2: #1f2e1c;
+        --cream: #f5efe4;
+        --cream2: #ede4d4;
+        --gold: #b8935a;
+        --gold2: #d4aa72;
+        --goldl: #e8c88a;
       }
       html {
         scroll-behavior: smooth;
       }
       body {
-        background: var(--bg);
-        color: var(--text);
         font-family: "Montserrat", sans-serif;
         overflow-x: hidden;
+        background: var(--dark);
       }
 
-      /* ══ ENVELOPE SCREEN ══ */
+      /* ══════════════════════
+   ENVELOPE SCREEN — final photorealistic vintage burgundy phone style
+══════════════════════ */
       #env-screen {
         position: fixed;
         inset: 0;
         z-index: 200;
-        background: radial-gradient(
-          ellipse at 50% 40%,
-          #223024 0%,
-          #111a13 100%
-        );
+        background:
+          radial-gradient(
+            ellipse at 46% 16%,
+            rgba(255, 255, 255, 0.65),
+            transparent 26%
+          ),
+          radial-gradient(
+            ellipse at 58% 82%,
+            rgba(255, 255, 255, 0.45),
+            transparent 28%
+          ),
+          linear-gradient(125deg, #cbbba2 0%, #f7f0e7 46%, #b79f82 100%);
         display: flex;
-        flex-direction: column;
         align-items: center;
-        justify-content: flex-start;
-        padding-top: clamp(30px, 6vh, 60px);
+        justify-content: center;
         cursor: pointer;
         overflow: hidden;
+        perspective: 1400px;
       }
 
-      /* background botanical corner illustrations */
-      .bg-bot {
-        position: absolute;
-        pointer-events: none;
-        opacity: 0.55;
-      }
-      .bg-bot.tl {
-        top: 0;
-        left: 0;
-        width: clamp(130px, 30vw, 200px);
-      }
-      .bg-bot.tr {
-        top: 0;
-        right: 0;
-        width: clamp(130px, 30vw, 200px);
-        transform: scaleX(-1);
-      }
-      .bg-bot.bl {
-        bottom: 0;
-        left: 0;
-        width: clamp(100px, 24vw, 160px);
-        transform: scaleY(-1);
-      }
-      .bg-bot.br {
-        bottom: 0;
-        right: 0;
-        width: clamp(100px, 24vw, 160px);
-        transform: scale(-1);
-      }
-
-      /* monogram wreath */
-      .env-mono-wrap {
-        position: relative;
-        z-index: 5;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-bottom: clamp(8px, 2vh, 16px);
-        animation: fadeUp 0.9s 0.1s both;
-      }
-      .wreath-ring {
-        width: clamp(64px, 14vw, 88px);
-        height: clamp(64px, 14vw, 88px);
-        border-radius: 50%;
-        border: 1px solid rgba(201, 149, 106, 0.5);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        margin-bottom: clamp(10px, 2vh, 18px);
-      }
-      .wreath-ring::before {
+      /* satin background folds */
+      #env-screen::before {
         content: "";
         position: absolute;
-        inset: 5px;
-        border-radius: 50%;
-        border: 1px solid rgba(201, 149, 106, 0.25);
-      }
-      .wreath-text {
-        font-family: "Cormorant Garamond", serif;
-        font-size: clamp(13px, 3vw, 18px);
-        letter-spacing: 5px;
-        color: var(--gold2);
-      }
-      /* small botanical ornament below ring */
-      .wreath-orn {
-        font-size: 12px;
-        color: var(--gold);
-        opacity: 0.7;
-        letter-spacing: 4px;
-      }
-
-      /* names block */
-      .env-names {
-        position: relative;
-        z-index: 5;
-        text-align: center;
-        animation: fadeUp 0.9s 0.2s both;
-        margin-bottom: clamp(12px, 3vh, 24px);
-      }
-      .env-with {
-        font-family: "Cormorant Garamond", serif;
-        font-style: italic;
-        font-size: clamp(14px, 3.5vw, 20px);
-        letter-spacing: 2px;
-        color: var(--gold2);
-        margin-bottom: 4px;
-      }
-      .env-name1,
-      .env-name2 {
-        font-family: "Cormorant Garamond", serif;
-        font-size: clamp(40px, 10vw, 72px);
-        font-weight: 400;
-        color: var(--cream);
-        letter-spacing: 6px;
-        text-transform: uppercase;
-        line-height: 1;
-      }
-      .env-and {
-        font-family: "Great Vibes", cursive;
-        font-size: clamp(28px, 7vw, 48px);
-        color: var(--gold);
-        display: block;
-        line-height: 1.1;
-      }
-      /* small diamond ornament between names and envelope */
-      .env-orn {
-        text-align: center;
-        color: var(--gold);
-        font-size: 10px;
-        letter-spacing: 8px;
-        opacity: 0.7;
-        margin-bottom: clamp(8px, 2vh, 16px);
-        animation: fadeUp 0.9s 0.3s both;
-        position: relative;
-        z-index: 5;
+        inset: -12%;
+        background:
+          linear-gradient(
+            105deg,
+            transparent 0 14%,
+            rgba(255, 255, 255, 0.68) 20%,
+            rgba(255, 255, 255, 0.22) 28%,
+            transparent 36%
+          ),
+          linear-gradient(
+            18deg,
+            transparent 0 54%,
+            rgba(255, 255, 255, 0.35) 60%,
+            transparent 68%
+          ),
+          radial-gradient(
+            ellipse at 20% 88%,
+            rgba(118, 83, 48, 0.18),
+            transparent 34%
+          );
+        filter: blur(3px);
+        opacity: 0.98;
       }
 
-      /* ── THE ENVELOPE ── */
-      .env-wrap {
+      .phone-frame {
+        width: min(84vw, 330px);
+        height: min(91vh, 690px);
+        border-radius: 38px;
+        background: #101010;
+        padding: 9px;
         position: relative;
-        z-index: 5;
-        width: clamp(260px, 72vw, 380px);
-        flex-shrink: 0;
-        animation: fadeUp 0.9s 0.35s both;
-      }
-
-      /* card peeking out top */
-      .env-card {
-        position: relative;
-        width: 88%;
-        margin: 0 auto;
-        background: linear-gradient(170deg, #ddd3b8, #cec4a2);
-        border-radius: 3px 3px 0 0;
-        padding: clamp(14px, 4vw, 24px) clamp(14px, 4vw, 24px) 0;
-        min-height: clamp(100px, 22vw, 150px);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
-        overflow: hidden;
-      }
-      /* botanical corners on card */
-      .card-corner {
-        position: absolute;
-        opacity: 0.35;
-      }
-      .card-corner.tl {
-        top: 4px;
-        left: 4px;
-        width: clamp(40px, 10vw, 60px);
-      }
-      .card-corner.tr {
-        top: 4px;
-        right: 4px;
-        width: clamp(40px, 10vw, 60px);
-        transform: scaleX(-1);
-      }
-      .card-corner.bl {
-        bottom: 0;
-        left: 4px;
-        width: clamp(35px, 8vw, 50px);
-        transform: scaleY(-1);
-      }
-      .card-corner.br {
-        bottom: 0;
-        right: 4px;
-        width: clamp(35px, 8vw, 50px);
-        transform: scale(-1);
-      }
-
-      .card-quote {
-        font-family: "Cormorant Garamond", serif;
-        font-style: italic;
-        font-size: clamp(11px, 2.8vw, 15px);
-        color: #4a3828;
-        text-align: center;
-        line-height: 1.8;
-        position: relative;
-        z-index: 2;
-        padding-top: 4px;
-      }
-      .card-src {
-        font-size: clamp(9px, 2.2vw, 12px);
-        color: #7a5a40;
-        margin-top: 4px;
-        letter-spacing: 1px;
-      }
-
-      /* envelope body */
-      .env-body {
-        position: relative;
-        background: linear-gradient(160deg, #c8b88a 0%, #b8a878 100%);
-        border-radius: 0 0 6px 6px;
-        overflow: hidden;
-        padding-bottom: clamp(40px, 10vw, 60px);
-      }
-      /* embossed botanical on envelope */
-      .env-emboss {
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-      }
-
-      /* fold lines */
-      .env-fold-left,
-      .env-fold-right {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 0;
-        height: 0;
-      }
-      .env-fold-left {
-        left: 0;
-        border-top: clamp(60px, 16vw, 100px) solid transparent;
-        border-bottom: clamp(60px, 16vw, 100px) solid transparent;
-        border-left: clamp(90px, 22vw, 140px) solid rgba(0, 0, 0, 0.08);
-      }
-      .env-fold-right {
-        right: 0;
-        border-top: clamp(60px, 16vw, 100px) solid transparent;
-        border-bottom: clamp(60px, 16vw, 100px) solid transparent;
-        border-right: clamp(90px, 22vw, 140px) solid rgba(0, 0, 0, 0.06);
-      }
-      .env-fold-bottom {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 0;
-        width: 0;
-        border-left: clamp(130px, 36vw, 190px) solid transparent;
-        border-right: clamp(130px, 36vw, 190px) solid transparent;
-        border-bottom: clamp(50px, 13vw, 80px) solid rgba(0, 0, 0, 0.07);
-      }
-
-      /* wax seal */
-      .env-seal {
-        position: relative;
-        z-index: 10;
-        margin: clamp(10px, 3vw, 18px) auto 0;
-        width: clamp(52px, 13vw, 72px);
-        height: clamp(52px, 13vw, 72px);
-        border-radius: 50%;
-        background: radial-gradient(
-          circle at 38% 35%,
-          #e0a8a0,
-          #c47878,
-          #a85858
-        );
-        display: flex;
-        align-items: center;
-        justify-content: center;
         box-shadow:
-          0 3px 16px rgba(0, 0, 0, 0.3),
-          inset 0 1px 3px rgba(255, 255, 255, 0.15);
-      }
-      .env-seal::before {
-        content: "";
-        position: absolute;
-        inset: 4px;
-        border-radius: 50%;
-        border: 1px solid rgba(255, 255, 255, 0.18);
-      }
-      /* leaf icon inside seal */
-      .seal-leaf {
-        font-size: clamp(16px, 4vw, 22px);
-        opacity: 0.85;
+          0 36px 88px rgba(30, 20, 14, 0.42),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+        animation: phoneIn 900ms cubic-bezier(0.22, 0.8, 0.22, 1) both;
       }
 
-      /* tap text on envelope */
-      .env-tap {
-        position: relative;
-        z-index: 5;
-        text-align: center;
-        padding: clamp(10px, 3vw, 16px) 0 clamp(6px, 2vw, 12px);
-      }
-      .env-tap p {
-        font-family: "Cormorant Garamond", serif;
-        font-style: italic;
-        font-size: clamp(13px, 3.2vw, 17px);
-        color: rgba(60, 44, 20, 0.65);
-        letter-spacing: 1px;
-      }
-      .env-tap-arrow {
-        display: block;
-        margin-top: 4px;
-        font-size: clamp(16px, 4vw, 20px);
-        color: rgba(60, 44, 20, 0.45);
-        animation: bob 2s ease-in-out infinite;
-      }
-      @keyframes bob {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(5px);
-        }
-      }
-
-      /* bottom ornament */
-      .env-bottom-orn {
-        position: relative;
-        z-index: 5;
-        margin-top: clamp(10px, 2.5vh, 20px);
-        text-align: center;
-        color: var(--gold);
-        font-size: 10px;
-        letter-spacing: 6px;
-        opacity: 0.6;
-        animation: fadeUp 0.9s 0.5s both;
-      }
-
-      @keyframes fadeUp {
+      @keyframes phoneIn {
         from {
           opacity: 0;
-          transform: translateY(16px);
+          transform: translateY(20px) scale(0.94);
         }
         to {
           opacity: 1;
-          transform: translateY(0);
+          transform: translateY(0) scale(1);
         }
       }
 
-      /* ══ MAIN CONTENT ══ */
+      .phone-frame::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 44%;
+        height: 30px;
+        transform: translateX(-50%);
+        background: #101010;
+        border-radius: 0 0 18px 18px;
+        z-index: 30;
+      }
+
+      .phone-frame::after {
+        content: "";
+        position: absolute;
+        bottom: 13px;
+        left: 50%;
+        width: 34%;
+        height: 5px;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.88);
+        border-radius: 100px;
+        z-index: 30;
+      }
+
+      .env-card {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        border-radius: 30px;
+        background:
+          radial-gradient(
+            ellipse at 50% 0%,
+            rgba(255, 255, 255, 0.055),
+            transparent 30%
+          ),
+          linear-gradient(180deg, #59101a 0%, #430b13 45%, #31060b 100%);
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.035);
+        isolation: isolate;
+      }
+
+      .env-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        opacity: 0.62;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='170' viewBox='0 0 170 170'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='5' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='170' height='170' filter='url(%23n)' opacity='.70'/%3E%3C/svg%3E");
+        mix-blend-mode: soft-light;
+        pointer-events: none;
+      }
+
+      .env-flap-left,
+      .env-flap-right,
+      .env-flap-bottom {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        pointer-events: none;
+      }
+
+      .env-flap-left {
+        background: linear-gradient(
+          37deg,
+          transparent 49.35%,
+          rgba(255, 255, 255, 0.11) 49.9%,
+          rgba(255, 255, 255, 0.025) 50.5%,
+          transparent 51.3%
+        );
+        filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.05));
+      }
+
+      .env-flap-right {
+        background: linear-gradient(
+          -37deg,
+          transparent 49.1%,
+          rgba(0, 0, 0, 0.38) 49.85%,
+          rgba(0, 0, 0, 0.08) 50.55%,
+          transparent 51.4%
+        );
+      }
+
+      .env-flap-bottom {
+        clip-path: polygon(0 58%, 50% 78.5%, 100% 58%, 100% 100%, 0 100%);
+        background: linear-gradient(
+          180deg,
+          rgba(40, 3, 9, 0.12),
+          rgba(31, 2, 7, 0.4)
+        );
+        opacity: 0.7;
+      }
+
+      .env-lace {
+        position: absolute;
+        left: -17%;
+        right: -17%;
+        top: 43.2%;
+        height: 118px;
+        z-index: 4;
+        opacity: 0.82;
+        filter: drop-shadow(0 10px 13px rgba(0, 0, 0, 0.34));
+      }
+
+      .env-lace::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(
+            ellipse at 50% -13%,
+            transparent 0 36%,
+            rgba(170, 67, 86, 0.62) 37.6% 39.6%,
+            transparent 41%
+          ),
+          radial-gradient(
+            circle at 20px 58px,
+            transparent 0 18px,
+            rgba(195, 78, 99, 0.65) 19px 21px,
+            transparent 22px
+          ),
+          radial-gradient(
+            circle at 54px 58px,
+            transparent 0 18px,
+            rgba(195, 78, 99, 0.58) 19px 21px,
+            transparent 22px
+          ),
+          radial-gradient(
+            circle at 37px 36px,
+            transparent 0 8px,
+            rgba(210, 108, 125, 0.42) 9px 10px,
+            transparent 11px
+          ),
+          repeating-linear-gradient(
+            130deg,
+            transparent 0 7px,
+            rgba(225, 122, 138, 0.3) 8px 9px,
+            transparent 10px 16px
+          ),
+          repeating-linear-gradient(
+            50deg,
+            transparent 0 8px,
+            rgba(225, 122, 138, 0.27) 9px 10px,
+            transparent 11px 17px
+          );
+        background-size:
+          100% 100%,
+          74px 66px,
+          74px 66px,
+          74px 66px,
+          24px 24px,
+          24px 24px;
+        background-position:
+          center top,
+          0 36px,
+          37px 36px,
+          0 22px,
+          0 0,
+          0 0;
+        -webkit-mask-image: radial-gradient(
+          ellipse at 50% -20%,
+          transparent 0 38%,
+          #000 39% 100%
+        );
+        mask-image: radial-gradient(
+          ellipse at 50% -20%,
+          transparent 0 38%,
+          #000 39% 100%
+        );
+      }
+
+      .env-lace::after {
+        content: "";
+        position: absolute;
+        left: 5%;
+        right: 5%;
+        top: 60px;
+        height: 1px;
+        background: rgba(222, 113, 132, 0.46);
+        box-shadow: 0 26px 0 rgba(222, 113, 132, 0.26);
+      }
+
+      .env-content {
+        position: absolute;
+        inset: 0;
+        z-index: 7;
+        text-align: center;
+        color: #f7eee8;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        pointer-events: none;
+      }
+
+      .env-title {
+        margin-top: 30.4%;
+        font-family: "Cinzel", "Cormorant Garamond", serif;
+        font-size: clamp(14px, 3.5vw, 19px);
+        font-weight: 500;
+        letter-spacing: 1.7px;
+        text-transform: uppercase;
+        line-height: 1;
+        color: #f2e6dd;
+        text-shadow: 0 2px 7px rgba(0, 0, 0, 0.44);
+      }
+
+      .env-names {
+        margin-top: 13px;
+        font-family: "Pinyon Script", "Great Vibes", cursive;
+        font-size: clamp(44px, 12.5vw, 64px);
+        line-height: 0.85;
+        letter-spacing: 0.1px;
+        color: #fff7ef;
+        text-shadow: 0 4px 11px rgba(0, 0, 0, 0.46);
+        white-space: nowrap;
+      }
+
+      /* 3D ivory wax medallion */
+      .wax-seal {
+        position: absolute;
+        top: 51.3%;
+        left: 50%;
+        width: clamp(122px, 34vw, 154px);
+        height: clamp(122px, 34vw, 154px);
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        z-index: 9;
+        background:
+          radial-gradient(
+            circle at 35% 28%,
+            rgba(255, 255, 255, 0.98),
+            rgba(255, 255, 255, 0.3) 20%,
+            transparent 36%
+          ),
+          radial-gradient(
+            circle at 50% 53%,
+            #fff4de 0%,
+            #ead9b7 57%,
+            #c3a776 100%
+          );
+        box-shadow:
+          0 22px 28px rgba(16, 0, 3, 0.48),
+          0 4px 8px rgba(16, 0, 3, 0.34),
+          inset 8px 8px 14px rgba(255, 255, 255, 0.75),
+          inset -10px -12px 18px rgba(104, 73, 34, 0.24);
+      }
+
+      .wax-seal::before {
+        content: "";
+        position: absolute;
+        inset: 6px;
+        border-radius: 50%;
+        background:
+          radial-gradient(
+            circle at 36% 28%,
+            rgba(255, 255, 255, 0.85),
+            transparent 30%
+          ),
+          linear-gradient(145deg, #fff7e8 0%, #ead8b8 55%, #c4aa7c 100%);
+        box-shadow:
+          inset 6px 6px 12px rgba(255, 255, 255, 0.86),
+          inset -8px -10px 14px rgba(103, 73, 35, 0.22),
+          0 0 0 1px rgba(255, 255, 255, 0.46);
+      }
+
+      .seal-inner {
+        position: absolute;
+        inset: 21px;
+        border-radius: 50%;
+        z-index: 2;
+        background:
+          radial-gradient(
+            circle at 38% 30%,
+            rgba(255, 255, 255, 0.55),
+            transparent 35%
+          ),
+          #f4e7cf;
+        box-shadow:
+          inset 3px 3px 8px rgba(255, 255, 255, 0.72),
+          inset -4px -5px 8px rgba(124, 91, 47, 0.16),
+          0 0 0 2px rgba(177, 139, 79, 0.42),
+          0 0 0 7px rgba(255, 255, 255, 0.18),
+          0 0 0 9px rgba(170, 132, 74, 0.22);
+      }
+
+      .seal-inner::before {
+        content: "";
+        position: absolute;
+        inset: 10px;
+        border-radius: 50%;
+        border: 1px solid rgba(181, 142, 81, 0.3);
+      }
+
+      .seal-monogram {
+        position: absolute;
+        inset: 0;
+        z-index: 3;
+        display: grid;
+        place-items: center;
+        font-family: "Pinyon Script", "Great Vibes", cursive;
+        font-size: clamp(36px, 10vw, 48px);
+        line-height: 1;
+        color: rgba(134, 99, 50, 0.64);
+        text-shadow:
+          1px 1px 0 rgba(255, 255, 255, 0.74),
+          -1px -1px 0 rgba(116, 82, 38, 0.12),
+          0 2px 4px rgba(108, 75, 34, 0.18);
+        transform: translateY(-1px);
+      }
+
+      .env-open-text {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 16.6%;
+        font-family: "Cinzel", "Cormorant Garamond", serif;
+        color: #f4e5da;
+        font-size: clamp(14px, 3.5vw, 19px);
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.48);
+      }
+
+      .env-card,
+      .phone-frame,
+      .wax-seal,
+      .env-lace,
+      .env-content {
+        transition:
+          transform 0.85s cubic-bezier(0.22, 0.8, 0.24, 1),
+          opacity 0.65s ease,
+          filter 0.65s ease;
+      }
+
+      #env-screen.opening .phone-frame {
+        transform: scale(1.08);
+      }
+      #env-screen.opening .env-card {
+        transform: scale(1.16);
+        filter: blur(1px);
+      }
+      #env-screen.opening .wax-seal {
+        transform: translate(-50%, -50%) scale(0.22) rotate(-8deg);
+        opacity: 0;
+      }
+      #env-screen.opening .env-lace,
+      #env-screen.opening .env-content {
+        opacity: 0;
+        transform: translateY(-16px);
+      }
+
+      @media (max-width: 430px) {
+        .phone-frame {
+          width: 100vw;
+          height: 100vh;
+          border-radius: 0;
+          padding: 0;
+        }
+        .phone-frame::before,
+        .phone-frame::after {
+          display: none;
+        }
+        .env-card {
+          border-radius: 0;
+        }
+        .env-title {
+          margin-top: 31vh;
+        }
+        .env-lace {
+          top: 43.7%;
+        }
+        .wax-seal {
+          top: 51.3%;
+        }
+      }
+
+      /* ══════════════════════
+   MAIN
+══════════════════════ */
       #main {
         display: none;
-      }
-
-      /* floating petals */
-      .petal {
-        position: fixed;
-        top: -20px;
-        pointer-events: none;
-        z-index: 1;
-        border-radius: 50% 0;
-        opacity: 0.55;
-        animation: pfall linear infinite;
-      }
-      @keyframes pfall {
-        0% {
-          transform: translateY(0) rotate(0deg) translateX(0);
-          opacity: 0.55;
-        }
-        50% {
-          transform: translateY(50vh) rotate(200deg) translateX(22px);
-        }
-        100% {
-          transform: translateY(110vh) rotate(400deg) translateX(-15px);
-          opacity: 0;
-        }
       }
 
       /* ── HERO ── */
       .hero {
         min-height: 100vh;
-        position: relative;
+        background: var(--dark);
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         text-align: center;
         padding: 3rem 2rem;
-        overflow: hidden;
-        background: radial-gradient(
-          ellipse at 50% 30%,
-          #223024 0%,
-          #111a13 100%
-        );
-      }
-      .hero-bot {
-        position: absolute;
-        pointer-events: none;
-        opacity: 0.5;
-      }
-      .hero-bot.tl {
-        top: 0;
-        left: 0;
-        width: clamp(140px, 32vw, 220px);
-      }
-      .hero-bot.tr {
-        top: 0;
-        right: 0;
-        width: clamp(140px, 32vw, 220px);
-        transform: scaleX(-1);
-      }
-      .hero-bot.bl {
-        bottom: 0;
-        left: 0;
-        width: clamp(120px, 26vw, 180px);
-        transform: scaleY(-1);
-      }
-      .hero-bot.br {
-        bottom: 0;
-        right: 0;
-        width: clamp(120px, 26vw, 180px);
-        transform: scale(-1);
-      }
-      /* right side floral spray */
-      .hero-bot.rt {
-        top: 20%;
-        right: 0;
-        width: clamp(80px, 18vw, 130px);
-      }
-
-      .hero-inner {
         position: relative;
-        z-index: 2;
+        overflow: hidden;
       }
       .hero-pre {
-        font-size: 10px;
+        font-size: 9px;
         letter-spacing: 5px;
         text-transform: uppercase;
-        color: var(--gold);
-        opacity: 0.8;
+        color: rgba(212, 170, 114, 0.6);
         margin-bottom: 1.8rem;
-        animation: fadeUp 0.8s 0.1s both;
       }
-      .hero-wreath {
-        width: clamp(70px, 15vw, 96px);
-        height: clamp(70px, 15vw, 96px);
+      .hero-mono {
+        width: clamp(70px, 14vw, 94px);
+        height: clamp(70px, 14vw, 94px);
         border-radius: 50%;
-        border: 1px solid rgba(201, 149, 106, 0.4);
+        border: 1px solid rgba(212, 170, 114, 0.3);
         display: flex;
         align-items: center;
         justify-content: center;
         margin: 0 auto 1.8rem;
         position: relative;
-        animation: fadeUp 0.8s 0.2s both;
       }
-      .hero-wreath::before {
+      .hero-mono::before {
         content: "";
         position: absolute;
-        inset: 5px;
+        inset: 6px;
         border-radius: 50%;
-        border: 1px solid rgba(201, 149, 106, 0.2);
+        border: 1px solid rgba(212, 170, 114, 0.15);
       }
-      .hero-wreath-text {
+      .hero-mono-txt {
         font-family: "Cormorant Garamond", serif;
-        font-size: clamp(14px, 3vw, 18px);
+        font-size: clamp(13px, 3vw, 17px);
         letter-spacing: 4px;
         color: var(--gold2);
-      }
-      .hero-names-block {
-        animation: fadeUp 0.8s 0.3s both;
       }
       .hero-name {
         font-family: "Cormorant Garamond", serif;
         font-weight: 400;
         font-size: clamp(44px, 11vw, 80px);
         color: var(--cream);
-        letter-spacing: 6px;
+        letter-spacing: 5px;
         text-transform: uppercase;
         line-height: 1.05;
       }
       .hero-and {
         font-family: "Great Vibes", cursive;
-        font-size: clamp(32px, 8vw, 56px);
-        color: var(--gold);
+        font-size: clamp(34px, 8vw, 56px);
+        color: var(--gold2);
         display: block;
-        line-height: 1.1;
+        line-height: 1.15;
       }
       .hero-divider {
         display: flex;
         align-items: center;
         gap: 12px;
-        max-width: 220px;
+        max-width: 200px;
         margin: 1.6rem auto 1.2rem;
-        animation: fadeUp 0.8s 0.4s both;
-      }
-      .hdl,
-      .hdr {
-        flex: 1;
-        height: 1px;
       }
       .hdl {
+        flex: 1;
+        height: 1px;
         background: linear-gradient(to right, transparent, var(--gold));
       }
       .hdr {
+        flex: 1;
+        height: 1px;
         background: linear-gradient(to left, transparent, var(--gold));
       }
       .hdc {
@@ -541,137 +579,143 @@
         font-size: 10px;
       }
       .hero-date {
-        font-size: 11px;
+        font-size: 10px;
         letter-spacing: 4px;
         text-transform: uppercase;
         color: var(--gold2);
-        animation: fadeUp 0.8s 0.5s both;
       }
-      .scroll-cue {
+      .scroll-hint {
         position: absolute;
         bottom: 2rem;
         left: 50%;
         transform: translateX(-50%);
-        font-size: 9px;
+        font-size: 8px;
         letter-spacing: 3px;
         text-transform: uppercase;
-        color: rgba(212, 196, 168, 0.35);
-        animation: sdwn 2.5s infinite;
-      }
-      @keyframes sdwn {
-        0%,
-        100% {
-          opacity: 0.35;
-          transform: translateX(-50%) translateY(0);
-        }
-        50% {
-          opacity: 0.7;
-          transform: translateX(-50%) translateY(5px);
-        }
+        color: rgba(232, 220, 200, 0.25);
       }
 
-      /* ── GENERIC SECTION ── */
+      /* ── SECTIONS ── */
       .sec {
-        padding: clamp(3rem, 8vh, 5.5rem) 2rem;
+        padding: clamp(3.5rem, 8vh, 6rem) clamp(1.5rem, 5vw, 3rem);
         position: relative;
         overflow: hidden;
-      }
-      .sec-inner {
-        max-width: 520px;
-        margin: 0 auto;
         text-align: center;
       }
-      .sec-bg1 {
-        background: radial-gradient(ellipse at 50% 50%, #1f3022, #111a13);
+      .sec-inner {
+        max-width: 540px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
       }
-      .sec-bg2 {
-        background: radial-gradient(ellipse at 50% 50%, #192419, #0f180f);
+      .bg-cream {
+        background: var(--cream);
+      }
+      .bg-cream2 {
+        background: var(--cream2);
+      }
+      .bg-dark {
+        background: var(--dark);
+      }
+      .bg-dark2 {
+        background: var(--dark2);
       }
 
-      /* section ornament */
+      /* botanical corner containers */
+      .bc {
+        position: absolute;
+        pointer-events: none;
+        z-index: 1;
+      }
+      .bc.tl {
+        top: 0;
+        left: 0;
+      }
+      .bc.tr {
+        top: 0;
+        right: 0;
+      }
+      .bc.bl {
+        bottom: 0;
+        left: 0;
+      }
+      .bc.br {
+        bottom: 0;
+        right: 0;
+      }
+
+      /* ── ORNAMENT & TITLES ── */
       .sorn {
         display: flex;
         align-items: center;
         gap: 10px;
-        max-width: 220px;
-        margin: 0 auto 1.8rem;
+        max-width: 200px;
+        margin: 0 auto 1.6rem;
       }
       .sorn-l,
       .sorn-r {
         flex: 1;
         height: 1px;
-        background: linear-gradient(to right, transparent, var(--gold));
-      }
-      .sorn-r {
-        background: linear-gradient(to left, transparent, var(--gold));
       }
       .sorn-m {
+        font-size: 10px;
+      }
+      .on-cream .sorn-l,
+      .on-cream .sorn-r {
+        background: var(--gold);
+      }
+      .on-cream .sorn-m {
         color: var(--gold);
-        font-size: 11px;
+      }
+      .on-dark .sorn-l,
+      .on-dark .sorn-r {
+        background: rgba(212, 170, 114, 0.4);
+      }
+      .on-dark .sorn-m {
+        color: var(--gold2);
       }
       .stitle {
         font-family: "Cormorant Garamond", serif;
         font-style: italic;
-        font-size: clamp(30px, 8vw, 46px);
+        font-size: clamp(32px, 8vw, 48px);
         font-weight: 300;
+        margin-bottom: 0.25rem;
+      }
+      .on-cream .stitle {
+        color: #2a1e10;
+      }
+      .on-dark .stitle {
         color: var(--cream);
-        margin-bottom: 0.3rem;
       }
       .ssub {
         font-size: 9px;
         letter-spacing: 4px;
         text-transform: uppercase;
+        margin-bottom: 2rem;
+      }
+      .on-cream .ssub {
         color: var(--gold);
-        opacity: 0.75;
-        margin-bottom: 2.2rem;
+      }
+      .on-dark .ssub {
+        color: rgba(212, 170, 114, 0.65);
       }
 
-      /* botanical section corners */
-      .sec-bot {
-        position: absolute;
-        opacity: 0.2;
-        pointer-events: none;
-      }
-      .sec-bot.tl {
-        top: 0;
-        left: 0;
-        width: clamp(80px, 18vw, 130px);
-      }
-      .sec-bot.tr {
-        top: 0;
-        right: 0;
-        width: clamp(80px, 18vw, 130px);
-        transform: scaleX(-1);
-      }
-      .sec-bot.br {
-        bottom: 0;
-        right: 0;
-        width: clamp(80px, 18vw, 130px);
-        transform: scale(-1);
-      }
-      .sec-bot.bl {
-        bottom: 0;
-        left: 0;
-        width: clamp(80px, 18vw, 130px);
-        transform: scaleY(-1);
-      }
-
-      /* ── SAVE THE DATE ── */
+      /* ── SAVE DATE ── */
       .date-frame {
         display: inline-block;
-        border: 1px solid rgba(201, 149, 106, 0.35);
-        padding: clamp(1.5rem, 5vw, 2.5rem) clamp(2rem, 7vw, 4rem);
+        border: 1px solid rgba(180, 148, 90, 0.4);
+        padding: clamp(1.5rem, 4vw, 2.5rem) clamp(2rem, 6vw, 3.5rem);
         position: relative;
         margin: 0.5rem 0 1.5rem;
       }
       .date-frame::before,
       .date-frame::after,
-      .date-corners::before,
-      .date-corners::after {
+      .dc::before,
+      .dc::after {
         content: "";
         position: absolute;
-        width: 16px;
-        height: 16px;
+        width: 14px;
+        height: 14px;
         border: 1px solid var(--gold);
       }
       .date-frame::before {
@@ -686,13 +730,13 @@
         border-left: none;
         border-top: none;
       }
-      .date-corners::before {
+      .dc::before {
         top: -1px;
         right: -1px;
         border-left: none;
         border-bottom: none;
       }
-      .date-corners::after {
+      .dc::after {
         bottom: -1px;
         left: -1px;
         border-right: none;
@@ -700,108 +744,107 @@
       }
       .date-num {
         font-family: "Cormorant Garamond", serif;
-        font-size: clamp(60px, 16vw, 90px);
+        font-size: clamp(60px, 15vw, 88px);
         font-weight: 300;
-        color: var(--gold2);
+        color: #2a1e10;
         line-height: 1;
       }
       .date-mo {
-        font-size: 11px;
+        font-size: 10px;
         letter-spacing: 7px;
         text-transform: uppercase;
         color: var(--gold);
       }
       .date-yr {
         font-family: "Cormorant Garamond", serif;
-        font-size: clamp(22px, 6vw, 32px);
+        font-size: clamp(20px, 5vw, 28px);
         font-weight: 300;
-        color: var(--cream);
+        color: #2a1e10;
       }
       .date-note {
         font-family: "Cormorant Garamond", serif;
         font-style: italic;
         font-size: clamp(14px, 3.5vw, 17px);
-        color: var(--text);
+        color: #6a5040;
         margin-top: 1rem;
       }
 
       /* ── LOCATION ── */
       .loc-name {
         font-family: "Cormorant Garamond", serif;
-        font-size: clamp(42px, 11vw, 64px);
+        font-size: clamp(40px, 10vw, 62px);
         font-weight: 300;
         color: var(--cream);
-        margin: 0.8rem 0 0.4rem;
+        margin: 0.8rem 0 0.5rem;
         line-height: 1;
       }
       .loc-sub {
-        font-size: 11px;
-        color: var(--text);
-        letter-spacing: 1px;
-        line-height: 2;
-        margin-bottom: 2rem;
         font-family: "Cormorant Garamond", serif;
         font-style: italic;
-        font-size: 16px;
+        font-size: clamp(14px, 3.5vw, 17px);
+        color: rgba(232, 220, 200, 0.65);
+        line-height: 1.9;
+        margin-bottom: 1.8rem;
       }
       .loc-btn {
         display: inline-block;
-        padding: 11px 32px;
-        border: 1px solid var(--gold);
-        color: var(--gold);
-        font-size: 9px;
+        padding: 11px 30px;
+        border: 1px solid rgba(212, 170, 114, 0.45);
+        color: var(--gold2);
+        font-size: 8px;
         letter-spacing: 4px;
         text-transform: uppercase;
         text-decoration: none;
         transition: all 0.3s;
       }
       .loc-btn:hover {
-        background: var(--gold);
-        color: #111a13;
+        background: rgba(212, 170, 114, 0.12);
       }
 
       /* ── PROGRAM ── */
       .prog-list {
         list-style: none;
         text-align: left;
-        max-width: 340px;
+        max-width: 360px;
         margin: 0 auto;
       }
       .prog-item {
         display: flex;
         align-items: flex-start;
-        gap: 1rem;
-        padding: 1rem 0;
-        border-bottom: 1px solid rgba(201, 149, 106, 0.12);
+        gap: 0.9rem;
+        padding: 0.9rem 0;
+        border-bottom: 1px solid rgba(180, 148, 90, 0.12);
       }
       .prog-item:last-child {
         border-bottom: none;
       }
-      .prog-time {
-        font-size: 9px;
-        letter-spacing: 2px;
-        color: var(--gold);
+      .prog-chip {
+        background: #2a1e10;
+        color: var(--gold2);
+        font-size: 8px;
+        letter-spacing: 1px;
+        padding: 3px 7px;
         min-width: 44px;
-        padding-top: 3px;
-        text-transform: uppercase;
+        text-align: center;
+        margin-top: 2px;
       }
       .prog-icon {
-        font-size: 16px;
-        min-width: 22px;
+        font-size: 14px;
+        min-width: 20px;
         text-align: center;
+        margin-top: 2px;
         opacity: 0.8;
       }
       .prog-title {
         font-family: "Cormorant Garamond", serif;
-        font-size: 18px;
-        color: var(--cream);
+        font-size: clamp(16px, 4vw, 19px);
+        color: #2a1e10;
       }
       .prog-desc {
         font-size: 10px;
         color: var(--gold);
-        opacity: 0.7;
+        opacity: 0.8;
         margin-top: 0.1rem;
-        letter-spacing: 0.5px;
       }
 
       /* ── COUNTDOWN ── */
@@ -813,13 +856,13 @@
         margin: 0 auto;
       }
       .cd-box {
-        border: 1px solid rgba(201, 149, 106, 0.2);
+        border: 1px solid rgba(212, 170, 114, 0.18);
         padding: 1.4rem 0.4rem;
-        background: rgba(255, 255, 255, 0.025);
+        background: rgba(255, 255, 255, 0.03);
       }
       .cd-num {
         font-family: "Cormorant Garamond", serif;
-        font-size: clamp(34px, 9vw, 52px);
+        font-size: clamp(32px, 8vw, 50px);
         font-weight: 300;
         color: var(--gold2);
         line-height: 1;
@@ -828,46 +871,43 @@
         font-size: 7px;
         letter-spacing: 3px;
         text-transform: uppercase;
-        color: rgba(212, 196, 168, 0.4);
+        color: rgba(232, 220, 200, 0.3);
         margin-top: 0.3rem;
       }
 
       /* ── RSVP ── */
-      .rsvp-quote {
+      .rsvp-q {
         font-family: "Cormorant Garamond", serif;
         font-style: italic;
         font-size: clamp(16px, 4vw, 20px);
-        color: var(--gold2);
-        margin-bottom: 1.5rem;
-        line-height: 1.7;
+        color: #5a4030;
+        margin-bottom: 1.8rem;
+        line-height: 1.8;
       }
       .rsvp-form {
         display: flex;
         flex-direction: column;
-        gap: 0.9rem;
+        gap: 0.85rem;
         max-width: 300px;
         margin: 0 auto;
       }
       .rsvp-form input,
       .rsvp-form select {
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px solid rgba(201, 149, 106, 0.22);
-        color: var(--cream);
-        padding: 12px 15px;
+        background: #fff;
+        border: 1px solid rgba(180, 148, 90, 0.3);
+        color: #3a2810;
+        padding: 12px 14px;
         font-family: "Montserrat", sans-serif;
         font-size: 11px;
         outline: none;
         transition: border-color 0.3s;
       }
       .rsvp-form input::placeholder {
-        color: rgba(212, 196, 168, 0.35);
+        color: #bbb;
       }
       .rsvp-form input:focus,
       .rsvp-form select:focus {
         border-color: var(--gold);
-      }
-      .rsvp-form select option {
-        background: #19271b;
       }
       .rsvp-btn {
         padding: 13px;
@@ -875,7 +915,7 @@
         border: 1px solid var(--gold);
         color: var(--gold);
         font-family: "Montserrat", sans-serif;
-        font-size: 9px;
+        font-size: 8px;
         letter-spacing: 4px;
         text-transform: uppercase;
         cursor: pointer;
@@ -883,22 +923,22 @@
       }
       .rsvp-btn:hover {
         background: var(--gold);
-        color: #111a13;
+        color: #fff;
       }
       #rsvp-ok {
         display: none;
         font-family: "Cormorant Garamond", serif;
         font-style: italic;
         font-size: 20px;
-        color: var(--gold2);
+        color: var(--gold);
       }
 
       /* ── FOOTER ── */
       footer {
         padding: 3rem 2rem;
         text-align: center;
-        background: #0e160f;
-        border-top: 1px solid rgba(201, 149, 106, 0.1);
+        background: var(--dark);
+        border-top: 1px solid rgba(212, 170, 114, 0.1);
       }
       .foot-names {
         font-family: "Great Vibes", cursive;
@@ -906,28 +946,28 @@
         color: var(--gold2);
       }
       .foot-info {
-        font-size: 9px;
+        font-size: 8px;
         letter-spacing: 4px;
         text-transform: uppercase;
-        color: rgba(212, 196, 168, 0.25);
+        color: rgba(232, 220, 200, 0.2);
         margin-top: 0.5rem;
       }
       .foot-verse {
         font-family: "Cormorant Garamond", serif;
         font-style: italic;
         font-size: 13px;
-        color: rgba(212, 196, 168, 0.35);
+        color: rgba(232, 220, 200, 0.28);
         margin-top: 1.2rem;
         line-height: 1.9;
       }
 
-      /* reveal on scroll */
+      /* ── REVEAL ── */
       .rev {
         opacity: 0;
-        transform: translateY(24px);
+        transform: translateY(22px);
         transition:
-          opacity 0.9s,
-          transform 0.9s;
+          opacity 0.85s,
+          transform 0.85s;
       }
       .rev.vis {
         opacity: 1;
@@ -936,551 +976,274 @@
     </style>
   </head>
   <body>
-    <!-- ══════════════════════════════
-     BOTANICAL SVG DEFS (reusable)
-══════════════════════════════ -->
-    <!-- Corner botanical SVG template used via img-like inline SVGs -->
-
-    <!-- ══ ENVELOPE SCREEN ══ -->
+    <!-- ═══════════════════════════
+     ENVELOPE SCREEN
+═══════════════════════════ -->
     <div id="env-screen">
-      <!-- background botanical corners -->
-      <svg
-        class="bg-bot tl"
-        viewBox="0 0 200 240"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <g stroke="#c9956a" stroke-width="1.1" fill="none">
-          <path d="M10 230 Q10 10 190 10" />
-          <path d="M10 180 Q40 140 80 100 Q120 60 170 20" />
-          <path d="M80 100 Q70 78 84 68" />
-          <ellipse
-            cx="84"
-            cy="62"
-            rx="7"
-            ry="11"
-            fill="#c9956a"
-            opacity=".4"
-            transform="rotate(-20 84 62)"
-          />
-          <path d="M80 100 Q95 88 95 72" />
-          <ellipse
-            cx="96"
-            cy="66"
-            rx="6"
-            ry="10"
-            fill="#c9956a"
-            opacity=".3"
-            transform="rotate(15 96 66)"
-          />
-          <circle cx="14" cy="14" r="4" fill="#c9956a" />
-          <path d="M40 10 Q44 30 56 26 Q48 38 62 34" />
-          <ellipse
-            cx="56"
-            cy="22"
-            rx="6"
-            ry="10"
-            fill="#c9956a"
-            opacity=".35"
-            transform="rotate(-15 56 22)"
-          />
-          <path d="M10 120 Q30 110 40 92 Q36 104 50 98" />
-          <ellipse
-            cx="52"
-            cy="94"
-            rx="7"
-            ry="5"
-            fill="#c9956a"
-            opacity=".3"
-            transform="rotate(-30 52 94)"
-          />
-          <!-- flower -->
-          <circle cx="140" cy="50" r="10" />
-          <circle cx="140" cy="50" r="5" />
-          <circle cx="140" cy="50" r="2.5" fill="#c9956a" opacity=".5" />
-          <line x1="140" y1="34" x2="140" y2="22" />
-          <ellipse cx="140" cy="18" rx="5" ry="8" fill="#c9956a" opacity=".4" />
-          <line x1="130" y1="42" x2="120" y2="34" />
-          <ellipse
-            cx="117"
-            cy="31"
-            rx="5"
-            ry="8"
-            fill="#c9956a"
-            opacity=".35"
-            transform="rotate(-45 117 31)"
-          />
-        </g>
-      </svg>
-      <svg
-        class="bg-bot tr"
-        viewBox="0 0 200 240"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <g stroke="#c9956a" stroke-width="1.1" fill="none">
-          <path d="M10 230 Q10 10 190 10" />
-          <path d="M10 180 Q40 140 80 100 Q120 60 170 20" />
-          <path d="M80 100 Q70 78 84 68" />
-          <ellipse
-            cx="84"
-            cy="62"
-            rx="7"
-            ry="11"
-            fill="#c9956a"
-            opacity=".4"
-            transform="rotate(-20 84 62)"
-          />
-          <circle cx="14" cy="14" r="4" fill="#c9956a" />
-          <path d="M40 10 Q44 30 56 26" />
-          <ellipse
-            cx="56"
-            cy="22"
-            rx="6"
-            ry="10"
-            fill="#c9956a"
-            opacity=".35"
-            transform="rotate(-15 56 22)"
-          />
-          <circle cx="140" cy="50" r="10" />
-          <circle cx="140" cy="50" r="5" />
-          <circle cx="140" cy="50" r="2.5" fill="#c9956a" opacity=".5" />
-          <line x1="140" y1="34" x2="140" y2="22" />
-          <ellipse cx="140" cy="18" rx="5" ry="8" fill="#c9956a" opacity=".4" />
-        </g>
-      </svg>
-      <svg
-        class="bg-bot bl"
-        viewBox="0 0 200 240"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <g stroke="#c9956a" stroke-width="1" fill="none">
-          <path d="M10 230 Q10 10 190 10" />
-          <circle cx="14" cy="14" r="3.5" fill="#c9956a" />
-          <path d="M10 120 Q30 100 44 80 Q40 96 56 88" />
-          <ellipse
-            cx="58"
-            cy="84"
-            rx="7"
-            ry="5"
-            fill="#c9956a"
-            opacity=".3"
-            transform="rotate(-30 58 84)"
-          />
-        </g>
-      </svg>
-      <svg
-        class="bg-bot br"
-        viewBox="0 0 200 240"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <g stroke="#c9956a" stroke-width="1" fill="none">
-          <path d="M10 230 Q10 10 190 10" />
-          <circle cx="14" cy="14" r="3.5" fill="#c9956a" />
-        </g>
-      </svg>
-
-      <!-- monogram + wreath -->
-      <div class="env-mono-wrap">
-        <div class="wreath-ring">
-          <span class="wreath-text">S | M</span>
-        </div>
-        <span class="wreath-orn">— ✦ —</span>
-      </div>
-
-      <!-- names -->
-      <div class="env-names">
-        <p class="env-with">With great joy</p>
-        <div class="env-name1">Shahed</div>
-        <div class="env-and">and</div>
-        <div class="env-name2">Mostafa</div>
-      </div>
-
-      <!-- diamond ornament -->
-      <div class="env-orn">— ◆ —</div>
-
-      <!-- envelope -->
-      <div class="env-wrap">
-        <!-- card peeking out -->
+      <div class="phone-frame">
         <div class="env-card">
-          <!-- botanical corners on card (SVG) -->
-          <svg
-            class="card-corner tl"
-            viewBox="0 0 60 80"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <g stroke="#8a7a58" stroke-width="1" fill="none" opacity=".6">
-              <path d="M4 76 Q4 4 56 4" />
-              <path d="M4 50 Q18 34 30 10" />
-              <path d="M30 10 Q28 22 36 18" />
-              <ellipse
-                cx="36"
-                cy="14"
-                rx="5"
-                ry="8"
-                fill="#8a7a58"
-                opacity=".4"
-                transform="rotate(-15 36 14)"
-              />
-              <circle cx="4" cy="4" r="2.5" fill="#8a7a58" />
-              <path d="M20 6 Q22 16 28 14" />
-              <ellipse
-                cx="28"
-                cy="10"
-                rx="4"
-                ry="7"
-                fill="#8a7a58"
-                opacity=".3"
-                transform="rotate(-10 28 10)"
-              />
-            </g>
-          </svg>
-          <svg
-            class="card-corner tr"
-            viewBox="0 0 60 80"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <g stroke="#8a7a58" stroke-width="1" fill="none" opacity=".6">
-              <path d="M4 76 Q4 4 56 4" />
-              <path d="M4 50 Q18 34 30 10" />
-              <circle cx="4" cy="4" r="2.5" fill="#8a7a58" />
-              <!-- small flower -->
-              <circle cx="46" cy="30" r="7" />
-              <circle cx="46" cy="30" r="3.5" />
-              <circle cx="46" cy="30" r="1.5" fill="#8a7a58" opacity=".5" />
-              <line x1="46" y1="17" x2="46" y2="8" />
-              <ellipse
-                cx="46"
-                cy="5"
-                rx="4"
-                ry="6"
-                fill="#8a7a58"
-                opacity=".35"
-              />
-            </g>
-          </svg>
-          <p class="card-quote">
-            "I have found the one<br />whom my soul loves."
-            <span class="card-src"><br />— Song of Solomon 3:4</span>
-          </p>
-        </div>
+          <div class="env-flap-left"></div>
+          <div class="env-flap-right"></div>
+          <div class="env-flap-bottom"></div>
+          <div class="env-lace"></div>
 
-        <!-- envelope body -->
-        <div class="env-body">
-          <!-- embossed botanical SVG -->
-          <svg
-            class="env-emboss"
-            viewBox="0 0 380 160"
-            preserveAspectRatio="xMidYMid slice"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <g stroke="rgba(255,255,255,0.18)" stroke-width="1" fill="none">
-              <!-- left botanical -->
-              <path d="M30 80 Q50 55 70 65 Q50 72 78 68" />
-              <path d="M30 80 Q20 100 15 120" />
-              <ellipse
-                cx="80"
-                cy="64"
-                rx="9"
-                ry="6"
-                fill="rgba(255,255,255,.12)"
-                transform="rotate(-20 80 64)"
-              />
-              <ellipse
-                cx="14"
-                cy="122"
-                rx="7"
-                ry="5"
-                fill="rgba(255,255,255,.1)"
-              />
-              <circle cx="30" cy="80" r="3" fill="rgba(255,255,255,.2)" />
-              <!-- left flower -->
-              <circle cx="55" cy="120" r="10" />
-              <circle cx="55" cy="120" r="5" />
-              <circle cx="55" cy="120" r="2.5" fill="rgba(255,255,255,.2)" />
-              <line x1="55" y1="104" x2="55" y2="90" />
-              <ellipse
-                cx="55"
-                cy="86"
-                rx="5"
-                ry="8"
-                fill="rgba(255,255,255,.12)"
-              />
-              <line x1="45" y1="112" x2="36" y2="104" />
-              <ellipse
-                cx="32"
-                cy="100"
-                rx="5"
-                ry="7"
-                fill="rgba(255,255,255,.1)"
-                transform="rotate(-40 32 100)"
-              />
-              <!-- right botanical -->
-              <path d="M350 80 Q330 55 310 65 Q330 72 302 68" />
-              <path d="M350 80 Q360 100 365 120" />
-              <ellipse
-                cx="300"
-                cy="64"
-                rx="9"
-                ry="6"
-                fill="rgba(255,255,255,.12)"
-                transform="rotate(20 300 64)"
-              />
-              <circle cx="350" cy="80" r="3" fill="rgba(255,255,255,.2)" />
-              <!-- right flower -->
-              <circle cx="325" cy="120" r="10" />
-              <circle cx="325" cy="120" r="5" />
-              <circle cx="325" cy="120" r="2.5" fill="rgba(255,255,255,.2)" />
-              <line x1="325" y1="104" x2="325" y2="90" />
-              <ellipse
-                cx="325"
-                cy="86"
-                rx="5"
-                ry="8"
-                fill="rgba(255,255,255,.12)"
-              />
-              <!-- fold lines -->
-              <line
-                x1="0"
-                y1="0"
-                x2="190"
-                y2="90"
-                stroke="rgba(0,0,0,.08)"
-                stroke-width="1.5"
-              />
-              <line
-                x1="380"
-                y1="0"
-                x2="190"
-                y2="90"
-                stroke="rgba(0,0,0,.07)"
-                stroke-width="1.5"
-              />
-            </g>
-          </svg>
-
-          <div class="env-fold-left"></div>
-          <div class="env-fold-right"></div>
-          <div class="env-fold-bottom"></div>
-
-          <!-- wax seal -->
-          <div style="display: flex; justify-content: center">
-            <div class="env-seal">
-              <span class="seal-leaf">🌿</span>
-            </div>
+          <div class="env-content">
+            <div class="env-title">A Love Letter From</div>
+            <div class="env-names">Shahed &amp; Mostafa</div>
+            <div class="env-open-text">Open the Invitation</div>
           </div>
 
-          <!-- tap to open -->
-          <div class="env-tap">
-            <p>Tap to open</p>
-            <span class="env-tap-arrow">↕</span>
+          <div class="wax-seal">
+            <div class="seal-inner"></div>
+            <div class="seal-monogram">S&amp;M</div>
           </div>
         </div>
       </div>
-
-      <!-- bottom ornament -->
-      <div class="env-bottom-orn">— ◆ —</div>
     </div>
-    <!-- /env-screen -->
 
-    <!-- ══ MAIN INVITATION ══ -->
+    <!-- ═══════════════════════════
+     MAIN INVITATION
+═══════════════════════════ -->
     <div id="main">
-      <!-- HERO -->
-      <div class="hero">
+      <!-- HERO — dark -->
+      <div class="hero on-dark">
+        <!-- botanical corners: realistic flowers on dark bg -->
         <svg
-          class="hero-bot tl"
-          viewBox="0 0 220 260"
+          class="bc tl"
+          width="clamp(140px,32vw,210px)"
+          viewBox="0 0 210 280"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          style="
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0.45;
+            pointer-events: none;
+          "
         >
-          <g stroke="#c9956a" stroke-width="1.1" fill="none">
-            <path d="M10 250 Q10 10 210 10" />
-            <path d="M10 160 Q50 120 90 80 Q130 40 180 14" />
-            <path d="M90 80 Q80 60 94 50" />
+          <g stroke="#c9956a" stroke-width="1.2" fill="none">
+            <path d="M14 268 Q22 180 60 120 Q90 72 160 20" />
+            <path d="M60 120 Q44 100 48 82 Q58 102 52 116" />
+            <path d="M85 88 Q72 70 76 52 Q86 72 80 86" />
+            <!-- big flower -->
+            <g transform="translate(160,22)">
+              <ellipse
+                cx="0"
+                cy="-18"
+                rx="5"
+                ry="11"
+                transform="rotate(0)"
+                fill="#c9956a"
+                opacity=".3"
+              />
+              <ellipse
+                cx="0"
+                cy="-18"
+                rx="5"
+                ry="11"
+                transform="rotate(45)"
+                fill="#c9956a"
+                opacity=".3"
+              />
+              <ellipse
+                cx="0"
+                cy="-18"
+                rx="5"
+                ry="11"
+                transform="rotate(90)"
+                fill="#c9956a"
+                opacity=".3"
+              />
+              <ellipse
+                cx="0"
+                cy="-18"
+                rx="5"
+                ry="11"
+                transform="rotate(135)"
+                fill="#c9956a"
+                opacity=".3"
+              />
+              <ellipse
+                cx="0"
+                cy="-18"
+                rx="5"
+                ry="11"
+                transform="rotate(180)"
+                fill="#c9956a"
+                opacity=".3"
+              />
+              <ellipse
+                cx="0"
+                cy="-18"
+                rx="5"
+                ry="11"
+                transform="rotate(225)"
+                fill="#c9956a"
+                opacity=".3"
+              />
+              <ellipse
+                cx="0"
+                cy="-18"
+                rx="5"
+                ry="11"
+                transform="rotate(270)"
+                fill="#c9956a"
+                opacity=".3"
+              />
+              <ellipse
+                cx="0"
+                cy="-18"
+                rx="5"
+                ry="11"
+                transform="rotate(315)"
+                fill="#c9956a"
+                opacity=".3"
+              />
+              <ellipse cx="0" cy="-18" rx="5" ry="11" transform="rotate(0)" />
+              <ellipse cx="0" cy="-18" rx="5" ry="11" transform="rotate(45)" />
+              <ellipse cx="0" cy="-18" rx="5" ry="11" transform="rotate(90)" />
+              <ellipse cx="0" cy="-18" rx="5" ry="11" transform="rotate(135)" />
+              <ellipse cx="0" cy="-18" rx="5" ry="11" transform="rotate(180)" />
+              <ellipse cx="0" cy="-18" rx="5" ry="11" transform="rotate(225)" />
+              <ellipse cx="0" cy="-18" rx="5" ry="11" transform="rotate(270)" />
+              <ellipse cx="0" cy="-18" rx="5" ry="11" transform="rotate(315)" />
+              <circle r="10" fill="#c9956a" opacity=".25" />
+              <circle r="10" />
+              <circle r="5" />
+              <circle r="2" fill="#c9956a" opacity=".7" />
+            </g>
+            <!-- small bud on side branch -->
+            <path d="M40 148 Q24 142 14 148" />
             <ellipse
-              cx="95"
-              cy="44"
-              rx="7"
-              ry="12"
+              cx="11"
+              cy="146"
+              rx="4"
+              ry="7"
               fill="#c9956a"
-              opacity=".4"
-              transform="rotate(-20 95 44)"
+              opacity=".2"
+              transform="rotate(-20 11 146)"
             />
-            <circle cx="13" cy="13" r="4" fill="#c9956a" />
-            <circle cx="150" cy="44" r="11" />
-            <circle cx="150" cy="44" r="5.5" />
-            <circle cx="150" cy="44" r="2.5" fill="#c9956a" opacity=".5" />
-            <line x1="150" y1="26" x2="150" y2="14" />
             <ellipse
-              cx="150"
-              cy="10"
-              rx="5"
-              ry="8"
-              fill="#c9956a"
-              opacity=".4"
-            />
-            <line x1="139" y1="35" x2="128" y2="26" />
-            <ellipse
-              cx="124"
-              cy="22"
-              rx="5"
-              ry="8"
-              fill="#c9956a"
-              opacity=".35"
-              transform="rotate(-45 124 22)"
-            />
-            <line x1="161" y1="35" x2="172" y2="26" />
-            <ellipse
-              cx="176"
-              cy="22"
-              rx="5"
-              ry="8"
-              fill="#c9956a"
-              opacity=".35"
-              transform="rotate(45 176 22)"
+              cx="11"
+              cy="146"
+              rx="4"
+              ry="7"
+              transform="rotate(-20 11 146)"
             />
           </g>
         </svg>
         <svg
-          class="hero-bot tr"
-          viewBox="0 0 220 260"
+          class="bc tr"
+          width="clamp(140px,32vw,210px)"
+          viewBox="0 0 210 280"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          style="
+            position: absolute;
+            top: 0;
+            right: 0;
+            transform: scaleX(-1);
+            opacity: 0.45;
+            pointer-events: none;
+          "
         >
-          <g stroke="#c9956a" stroke-width="1.1" fill="none">
-            <path d="M10 250 Q10 10 210 10" />
-            <path d="M10 160 Q50 120 90 80 Q130 40 180 14" />
-            <ellipse
-              cx="95"
-              cy="44"
-              rx="7"
-              ry="12"
-              fill="#c9956a"
-              opacity=".4"
-              transform="rotate(-20 95 44)"
-            />
-            <circle cx="13" cy="13" r="4" fill="#c9956a" />
-            <circle cx="150" cy="44" r="11" />
-            <circle cx="150" cy="44" r="5.5" />
-            <circle cx="150" cy="44" r="2.5" fill="#c9956a" opacity=".5" />
-            <line x1="150" y1="26" x2="150" y2="14" />
-            <ellipse
-              cx="150"
-              cy="10"
-              rx="5"
-              ry="8"
-              fill="#c9956a"
-              opacity=".4"
-            />
-          </g>
-        </svg>
-        <svg
-          class="hero-bot bl"
-          viewBox="0 0 220 260"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <g stroke="#c9956a" stroke-width="1" fill="none">
-            <path d="M10 250 Q10 10 210 10" />
-            <circle cx="13" cy="13" r="4" fill="#c9956a" />
-            <path d="M10 140 Q35 115 52 88 Q48 105 64 96" />
-            <ellipse
-              cx="66"
-              cy="91"
-              rx="8"
-              ry="5"
-              fill="#c9956a"
-              opacity=".3"
-              transform="rotate(-30 66 91)"
-            />
-          </g>
-        </svg>
-        <svg
-          class="hero-bot br"
-          viewBox="0 0 220 260"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <g stroke="#c9956a" stroke-width="1" fill="none">
-            <path d="M10 250 Q10 10 210 10" />
-            <circle cx="13" cy="13" r="4" fill="#c9956a" />
-          </g>
-        </svg>
-        <!-- right side tall floral spray -->
-        <svg
-          class="hero-bot rt"
-          viewBox="0 0 130 320"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <g stroke="#c9956a" stroke-width="1" fill="none">
-            <path d="M65 310 Q60 240 70 180 Q75 120 60 60" />
-            <path d="M70 180 Q90 165 100 145" />
-            <ellipse
-              cx="102"
-              cy="140"
-              rx="7"
-              ry="11"
-              fill="#c9956a"
-              opacity=".35"
-              transform="rotate(20 102 140)"
-            />
-            <path d="M65 240 Q45 225 38 205" />
-            <ellipse
-              cx="35"
-              cy="200"
-              rx="7"
-              ry="11"
-              fill="#c9956a"
-              opacity=".3"
-              transform="rotate(-20 35 200)"
-            />
-            <circle cx="60" cy="60" r="12" />
-            <circle cx="60" cy="60" r="6" />
-            <circle cx="60" cy="60" r="2.5" fill="#c9956a" opacity=".5" />
-            <line x1="60" y1="40" x2="60" y2="26" />
-            <ellipse
-              cx="60"
-              cy="22"
-              rx="5"
-              ry="9"
-              fill="#c9956a"
-              opacity=".4"
-            />
-            <path d="M60 60 Q78 48 88 30" />
-            <ellipse
-              cx="90"
-              cy="26"
-              rx="5"
-              ry="8"
-              fill="#c9956a"
-              opacity=".35"
-              transform="rotate(20 90 26)"
-            />
-            <path d="M60 60 Q42 48 32 30" />
-            <ellipse
-              cx="30"
-              cy="26"
-              rx="5"
-              ry="8"
-              fill="#c9956a"
-              opacity=".35"
-              transform="rotate(-20 30 26)"
-            />
+          <g stroke="#c9956a" stroke-width="1.2" fill="none">
+            <path d="M14 268 Q22 180 60 120 Q90 72 160 20" />
+            <path d="M60 120 Q44 100 48 82 Q58 102 52 116" />
+            <g transform="translate(160,22)">
+              <ellipse
+                cx="0"
+                cy="-18"
+                rx="5"
+                ry="11"
+                transform="rotate(0)"
+                fill="#c9956a"
+                opacity=".3"
+              />
+              <ellipse
+                cx="0"
+                cy="-18"
+                rx="5"
+                ry="11"
+                transform="rotate(45)"
+                fill="#c9956a"
+                opacity=".3"
+              />
+              <ellipse
+                cx="0"
+                cy="-18"
+                rx="5"
+                ry="11"
+                transform="rotate(90)"
+                fill="#c9956a"
+                opacity=".3"
+              />
+              <ellipse
+                cx="0"
+                cy="-18"
+                rx="5"
+                ry="11"
+                transform="rotate(135)"
+                fill="#c9956a"
+                opacity=".3"
+              />
+              <ellipse
+                cx="0"
+                cy="-18"
+                rx="5"
+                ry="11"
+                transform="rotate(180)"
+                fill="#c9956a"
+                opacity=".3"
+              />
+              <ellipse
+                cx="0"
+                cy="-18"
+                rx="5"
+                ry="11"
+                transform="rotate(225)"
+                fill="#c9956a"
+                opacity=".3"
+              />
+              <ellipse
+                cx="0"
+                cy="-18"
+                rx="5"
+                ry="11"
+                transform="rotate(270)"
+                fill="#c9956a"
+                opacity=".3"
+              />
+              <ellipse
+                cx="0"
+                cy="-18"
+                rx="5"
+                ry="11"
+                transform="rotate(315)"
+                fill="#c9956a"
+                opacity=".3"
+              />
+              <ellipse cx="0" cy="-18" rx="5" ry="11" transform="rotate(0)" />
+              <ellipse cx="0" cy="-18" rx="5" ry="11" transform="rotate(45)" />
+              <ellipse cx="0" cy="-18" rx="5" ry="11" transform="rotate(90)" />
+              <ellipse cx="0" cy="-18" rx="5" ry="11" transform="rotate(135)" />
+              <ellipse cx="0" cy="-18" rx="5" ry="11" transform="rotate(180)" />
+              <ellipse cx="0" cy="-18" rx="5" ry="11" transform="rotate(225)" />
+              <ellipse cx="0" cy="-18" rx="5" ry="11" transform="rotate(270)" />
+              <ellipse cx="0" cy="-18" rx="5" ry="11" transform="rotate(315)" />
+              <circle r="10" fill="#c9956a" opacity=".25" />
+              <circle r="10" />
+              <circle r="5" />
+              <circle r="2" fill="#c9956a" opacity=".7" />
+            </g>
           </g>
         </svg>
 
-        <div class="hero-inner">
+        <div style="position: relative; z-index: 2">
           <p class="hero-pre">you are cordially invited to celebrate</p>
-          <div class="hero-wreath">
-            <span class="hero-wreath-text">S | M</span>
-          </div>
-          <div class="hero-names-block">
+          <div class="hero-mono"><span class="hero-mono-txt">S | M</span></div>
+          <div>
             <div class="hero-name">Shahed</div>
             <span class="hero-and">and</span>
             <div class="hero-name">Mostafa</div>
@@ -1492,35 +1255,98 @@
           </div>
           <p class="hero-date">30 · July · 2026 &nbsp;·&nbsp; Lebanon</p>
         </div>
-        <p class="scroll-cue">scroll ↓</p>
+        <p class="scroll-hint">scroll ↓</p>
       </div>
 
-      <!-- SAVE THE DATE -->
-      <div class="sec sec-bg1 rev">
+      <!-- SAVE THE DATE — cream -->
+      <div class="sec bg-cream on-cream rev">
         <svg
-          class="sec-bot tl"
-          viewBox="0 0 130 130"
+          class="bc tl"
+          width="clamp(90px,18vw,130px)"
+          viewBox="0 0 130 170"
           fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+          style="opacity: 0.22; pointer-events: none"
         >
-          <g stroke="#c9956a" stroke-width="1" fill="none">
-            <path d="M5 125 Q5 5 125 5" />
-            <circle cx="8" cy="8" r="3" fill="#c9956a" />
-            <circle cx="80" cy="32" r="8" />
-            <circle cx="80" cy="32" r="4" />
-            <line x1="80" y1="20" x2="80" y2="10" />
-            <ellipse cx="80" cy="7" rx="4" ry="6" fill="#c9956a" opacity=".4" />
+          <g stroke="#b8935a" stroke-width="1.1" fill="none">
+            <path d="M8 162 Q12 100 48 60 Q72 30 120 10" />
+            <path d="M42 80 Q30 66 32 50 Q42 66 36 78" />
+            <g transform="translate(118,12)">
+              <ellipse
+                cx="0"
+                cy="-14"
+                rx="4"
+                ry="9"
+                transform="rotate(0)"
+                fill="#b8935a"
+                opacity=".3"
+              />
+              <ellipse
+                cx="0"
+                cy="-14"
+                rx="4"
+                ry="9"
+                transform="rotate(60)"
+                fill="#b8935a"
+                opacity=".3"
+              />
+              <ellipse
+                cx="0"
+                cy="-14"
+                rx="4"
+                ry="9"
+                transform="rotate(120)"
+                fill="#b8935a"
+                opacity=".3"
+              />
+              <ellipse
+                cx="0"
+                cy="-14"
+                rx="4"
+                ry="9"
+                transform="rotate(180)"
+                fill="#b8935a"
+                opacity=".3"
+              />
+              <ellipse
+                cx="0"
+                cy="-14"
+                rx="4"
+                ry="9"
+                transform="rotate(240)"
+                fill="#b8935a"
+                opacity=".3"
+              />
+              <ellipse
+                cx="0"
+                cy="-14"
+                rx="4"
+                ry="9"
+                transform="rotate(300)"
+                fill="#b8935a"
+                opacity=".3"
+              />
+              <ellipse cx="0" cy="-14" rx="4" ry="9" transform="rotate(0)" />
+              <ellipse cx="0" cy="-14" rx="4" ry="9" transform="rotate(60)" />
+              <ellipse cx="0" cy="-14" rx="4" ry="9" transform="rotate(120)" />
+              <ellipse cx="0" cy="-14" rx="4" ry="9" transform="rotate(180)" />
+              <ellipse cx="0" cy="-14" rx="4" ry="9" transform="rotate(240)" />
+              <ellipse cx="0" cy="-14" rx="4" ry="9" transform="rotate(300)" />
+              <circle r="8" fill="#b8935a" opacity=".2" />
+              <circle r="8" />
+              <circle r="3.5" />
+              <circle r="1.5" fill="#b8935a" opacity=".6" />
+            </g>
           </g>
         </svg>
         <svg
-          class="sec-bot tr"
-          viewBox="0 0 130 130"
+          class="bc br"
+          width="clamp(90px,18vw,130px)"
+          viewBox="0 0 130 170"
           fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+          style="opacity: 0.18; pointer-events: none; transform: scale(-1)"
         >
-          <g stroke="#c9956a" stroke-width="1" fill="none">
-            <path d="M5 125 Q5 5 125 5" />
-            <circle cx="8" cy="8" r="3" fill="#c9956a" />
+          <g stroke="#b8935a" stroke-width="1" fill="none">
+            <path d="M8 162 Q12 100 48 60 Q72 30 120 10" />
           </g>
         </svg>
         <div class="sec-inner">
@@ -1532,7 +1358,7 @@
           <h2 class="stitle">Save the Date</h2>
           <p class="ssub">mark your calendar</p>
           <div class="date-frame">
-            <div class="date-corners"></div>
+            <div class="dc"></div>
             <div class="date-num">30</div>
             <div class="date-mo">July</div>
             <div class="date-yr">2026</div>
@@ -1541,28 +1367,65 @@
         </div>
       </div>
 
-      <!-- LOCATION -->
-      <div class="sec sec-bg2 rev">
+      <!-- LOCATION — dark -->
+      <div class="sec bg-dark on-dark rev">
         <svg
-          class="sec-bot bl"
-          viewBox="0 0 130 130"
+          class="bc tl"
+          width="clamp(90px,18vw,130px)"
+          viewBox="0 0 130 170"
           fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+          style="opacity: 0.3; pointer-events: none"
         >
-          <g stroke="#c9956a" stroke-width="1" fill="none">
-            <path d="M5 125 Q5 5 125 5" />
-            <circle cx="8" cy="8" r="3" fill="#c9956a" />
+          <g stroke="#c9956a" stroke-width="1.1" fill="none">
+            <path d="M8 162 Q14 100 50 58 Q76 28 122 8" />
+            <path d="M44 78 Q32 62 34 46 Q44 64 38 76" />
+            <g transform="translate(120,10)">
+              <ellipse cx="0" cy="-13" rx="4" ry="8.5" transform="rotate(0)" />
+              <ellipse cx="0" cy="-13" rx="4" ry="8.5" transform="rotate(60)" />
+              <ellipse
+                cx="0"
+                cy="-13"
+                rx="4"
+                ry="8.5"
+                transform="rotate(120)"
+              />
+              <ellipse
+                cx="0"
+                cy="-13"
+                rx="4"
+                ry="8.5"
+                transform="rotate(180)"
+              />
+              <ellipse
+                cx="0"
+                cy="-13"
+                rx="4"
+                ry="8.5"
+                transform="rotate(240)"
+              />
+              <ellipse
+                cx="0"
+                cy="-13"
+                rx="4"
+                ry="8.5"
+                transform="rotate(300)"
+              />
+              <circle r="7" />
+              <circle r="3" />
+              <circle r="1.5" fill="#c9956a" opacity=".6" />
+            </g>
           </g>
         </svg>
         <svg
-          class="sec-bot br"
-          viewBox="0 0 130 130"
+          class="bc br"
+          width="clamp(90px,18vw,130px)"
+          viewBox="0 0 130 170"
           fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+          style="opacity: 0.25; pointer-events: none; transform: scale(-1)"
         >
           <g stroke="#c9956a" stroke-width="1" fill="none">
-            <path d="M5 125 Q5 5 125 5" />
-            <circle cx="8" cy="8" r="3" fill="#c9956a" />
+            <path d="M8 162 Q14 100 50 58 Q76 28 122 8" />
+            <path d="M44 78 Q32 62 34 46" />
           </g>
         </svg>
         <div class="sec-inner">
@@ -1573,7 +1436,9 @@
           </div>
           <h2 class="stitle">Location</h2>
           <p class="ssub">where we say "I do"</p>
-          <div style="font-size: 22px; margin-bottom: 0.5rem">📍</div>
+          <div style="font-size: 20px; margin-bottom: 0.5rem; opacity: 0.6">
+            📍
+          </div>
           <div class="loc-name">Lebanon</div>
           <p class="loc-sub">
             The exact venue details<br />will be shared soon
@@ -1587,17 +1452,29 @@
         </div>
       </div>
 
-      <!-- PROGRAM -->
-      <div class="sec sec-bg1 rev">
+      <!-- PROGRAM — cream -->
+      <div class="sec bg-cream2 on-cream rev">
         <svg
-          class="sec-bot tl"
-          viewBox="0 0 130 130"
+          class="bc tr"
+          width="clamp(90px,18vw,130px)"
+          viewBox="0 0 130 170"
           fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+          style="opacity: 0.2; pointer-events: none; transform: scaleX(-1)"
         >
-          <g stroke="#c9956a" stroke-width="1" fill="none">
-            <path d="M5 125 Q5 5 125 5" />
-            <circle cx="8" cy="8" r="3" fill="#c9956a" />
+          <g stroke="#b8935a" stroke-width="1.1" fill="none">
+            <path d="M8 162 Q12 100 48 60 Q72 30 120 10" />
+            <path d="M44 76 Q56 62 54 46 Q44 64 50 74" />
+            <g transform="translate(118,12)">
+              <ellipse cx="0" cy="-13" rx="4" ry="8" transform="rotate(0)" />
+              <ellipse cx="0" cy="-13" rx="4" ry="8" transform="rotate(60)" />
+              <ellipse cx="0" cy="-13" rx="4" ry="8" transform="rotate(120)" />
+              <ellipse cx="0" cy="-13" rx="4" ry="8" transform="rotate(180)" />
+              <ellipse cx="0" cy="-13" rx="4" ry="8" transform="rotate(240)" />
+              <ellipse cx="0" cy="-13" rx="4" ry="8" transform="rotate(300)" />
+              <circle r="7" />
+              <circle r="3" />
+              <circle r="1.5" fill="#b8935a" opacity=".6" />
+            </g>
           </g>
         </svg>
         <div class="sec-inner">
@@ -1610,7 +1487,7 @@
           <p class="ssub">what we have planned for you</p>
           <ul class="prog-list">
             <li class="prog-item">
-              <div class="prog-time">16:00</div>
+              <div class="prog-chip">16:00</div>
               <div class="prog-icon">💍</div>
               <div>
                 <div class="prog-title">Ceremony</div>
@@ -1618,7 +1495,7 @@
               </div>
             </li>
             <li class="prog-item">
-              <div class="prog-time">17:30</div>
+              <div class="prog-chip">17:30</div>
               <div class="prog-icon">🥂</div>
               <div>
                 <div class="prog-title">Welcome Cocktail</div>
@@ -1626,7 +1503,7 @@
               </div>
             </li>
             <li class="prog-item">
-              <div class="prog-time">19:00</div>
+              <div class="prog-chip">19:00</div>
               <div class="prog-icon">🌹</div>
               <div>
                 <div class="prog-title">Wedding Dinner</div>
@@ -1634,7 +1511,7 @@
               </div>
             </li>
             <li class="prog-item">
-              <div class="prog-time">21:00</div>
+              <div class="prog-chip">21:00</div>
               <div class="prog-icon">🎶</div>
               <div>
                 <div class="prog-title">First Dance & Music</div>
@@ -1642,7 +1519,7 @@
               </div>
             </li>
             <li class="prog-item">
-              <div class="prog-time">Late ✨</div>
+              <div class="prog-chip">Late</div>
               <div class="prog-icon">🌙</div>
               <div>
                 <div class="prog-title">Celebrations</div>
@@ -1653,17 +1530,29 @@
         </div>
       </div>
 
-      <!-- COUNTDOWN -->
-      <div class="sec sec-bg2 rev">
+      <!-- COUNTDOWN — dark -->
+      <div class="sec bg-dark2 on-dark rev">
         <svg
-          class="sec-bot br"
-          viewBox="0 0 130 130"
+          class="bc tl"
+          width="clamp(90px,18vw,130px)"
+          viewBox="0 0 130 170"
           fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+          style="opacity: 0.28; pointer-events: none"
         >
           <g stroke="#c9956a" stroke-width="1" fill="none">
-            <path d="M5 125 Q5 5 125 5" />
-            <circle cx="8" cy="8" r="3" fill="#c9956a" />
+            <path d="M8 162 Q14 100 50 58 Q76 28 122 8" />
+            <path d="M32 110 Q18 100 12 86 Q22 98 16 108" />
+          </g>
+        </svg>
+        <svg
+          class="bc br"
+          width="clamp(90px,18vw,130px)"
+          viewBox="0 0 130 170"
+          fill="none"
+          style="opacity: 0.22; pointer-events: none; transform: scale(-1)"
+        >
+          <g stroke="#c9956a" stroke-width="1" fill="none">
+            <path d="M8 162 Q14 100 50 58 Q76 28 122 8" />
           </g>
         </svg>
         <div class="sec-inner">
@@ -1695,28 +1584,29 @@
         </div>
       </div>
 
-      <!-- RSVP -->
-      <div class="sec sec-bg1 rev">
+      <!-- RSVP — cream -->
+      <div class="sec bg-cream on-cream rev">
         <svg
-          class="sec-bot tl"
-          viewBox="0 0 130 130"
+          class="bc tl"
+          width="clamp(90px,18vw,130px)"
+          viewBox="0 0 130 170"
           fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+          style="opacity: 0.2; pointer-events: none"
         >
-          <g stroke="#c9956a" stroke-width="1" fill="none">
-            <path d="M5 125 Q5 5 125 5" />
-            <circle cx="8" cy="8" r="3" fill="#c9956a" />
-          </g>
-        </svg>
-        <svg
-          class="sec-bot br"
-          viewBox="0 0 130 130"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <g stroke="#c9956a" stroke-width="1" fill="none">
-            <path d="M5 125 Q5 5 125 5" />
-            <circle cx="8" cy="8" r="3" fill="#c9956a" />
+          <g stroke="#b8935a" stroke-width="1.1" fill="none">
+            <path d="M8 162 Q12 100 48 60 Q72 30 120 10" />
+            <path d="M40 84 Q28 70 30 54 Q40 70 34 82" />
+            <g transform="translate(118,12)">
+              <ellipse cx="0" cy="-13" rx="4" ry="8" transform="rotate(0)" />
+              <ellipse cx="0" cy="-13" rx="4" ry="8" transform="rotate(60)" />
+              <ellipse cx="0" cy="-13" rx="4" ry="8" transform="rotate(120)" />
+              <ellipse cx="0" cy="-13" rx="4" ry="8" transform="rotate(180)" />
+              <ellipse cx="0" cy="-13" rx="4" ry="8" transform="rotate(240)" />
+              <ellipse cx="0" cy="-13" rx="4" ry="8" transform="rotate(300)" />
+              <circle r="7" />
+              <circle r="3" />
+              <circle r="1.5" fill="#b8935a" opacity=".6" />
+            </g>
           </g>
         </svg>
         <div class="sec-inner">
@@ -1727,7 +1617,7 @@
           </div>
           <h2 class="stitle">Join Us</h2>
           <p class="ssub">kindly reply before 15 July 2026</p>
-          <p class="rsvp-quote">"Your presence means<br />the world to us."</p>
+          <p class="rsvp-q">"Your presence means<br />the world to us."</p>
           <div class="rsvp-form" id="rsvpForm">
             <input type="text" id="rn" placeholder="Your full name" />
             <select id="ra">
@@ -1753,13 +1643,12 @@
         </div>
       </div>
 
-      <!-- FOOTER -->
       <footer>
         <div class="foot-names">Shahed & Mostafa</div>
         <p class="foot-info">30 · July · 2026 · Lebanon</p>
         <p class="foot-verse">
-          "And He placed between you affection and mercy."<br />
-          <span style="font-size: 11px; letter-spacing: 2px"
+          "And He placed between you affection and mercy."<br /><span
+            style="font-size: 11px; letter-spacing: 2px"
             >— Quran 30:21</span
           >
         </p>
@@ -1768,38 +1657,24 @@
     <!-- /main -->
 
     <script>
-      // ── Petals ──
-      const pc = ["#c9956a", "#e8c49a", "#b07870", "#8a9e8c", "#d4c4a8"];
-      for (let i = 0; i < 16; i++) {
-        const p = document.createElement("div");
-        p.className = "petal";
-        const s = 5 + Math.random() * 8;
-        p.style.cssText =
-          `width:${s}px;height:${s * 1.6}px;left:${Math.random() * 100}vw;` +
-          `animation-duration:${8 + Math.random() * 12}s;animation-delay:${Math.random() * 14}s;` +
-          `background:${pc[Math.floor(Math.random() * pc.length)]};transform:rotate(${Math.random() * 360}deg)`;
-        document.body.appendChild(p);
-      }
-
-      // ── Open envelope ──
       let opened = false;
       document.getElementById("env-screen").addEventListener("click", () => {
         if (opened) return;
         opened = true;
         const s = document.getElementById("env-screen");
-        s.style.transition = "opacity 1s";
-        s.style.opacity = "0";
+        s.classList.add("opening");
         setTimeout(() => {
-          s.style.display = "none";
-          const m = document.getElementById("main");
-          m.style.display = "block";
-          window.scrollTo(0, 0);
-          initReveal();
-          startCountdown();
-        }, 1000);
+          s.style.transition = "opacity .9s ease";
+          s.style.opacity = "0";
+          setTimeout(() => {
+            s.style.display = "none";
+            document.getElementById("main").style.display = "block";
+            window.scrollTo(0, 0);
+            initReveal();
+            startCountdown();
+          }, 900);
+        }, 550);
       });
-
-      // ── Scroll reveal ──
       function initReveal() {
         const obs = new IntersectionObserver(
           (en) => {
@@ -1811,8 +1686,6 @@
         );
         document.querySelectorAll(".rev").forEach((el) => obs.observe(el));
       }
-
-      // ── Countdown ──
       function startCountdown() {
         const t = new Date("2026-07-30T16:00:00");
         function tick() {
@@ -1839,11 +1712,9 @@
         tick();
         setInterval(tick, 1000);
       }
-
-      // ── RSVP ──
       function doRSVP() {
-        const n = document.getElementById("rn").value;
-        const a = document.getElementById("ra").value;
+        const n = document.getElementById("rn").value,
+          a = document.getElementById("ra").value;
         if (!n || !a) {
           alert("Please fill in your name and attendance.");
           return;
