@@ -1143,6 +1143,212 @@
           letter-spacing: 1.7px !important;
         }
       }
+
+      /* GIFT REGISTRY — final page after countdown */
+      .gift-registry-section {
+        min-height: 100svh;
+        display: grid;
+        place-items: center;
+        padding: 78px 22px;
+        background:
+          linear-gradient(rgba(255, 250, 241, 0.91), rgba(246, 239, 228, 0.96)),
+          radial-gradient(circle at 50% 0%, #fffdf7, #ddccb1 78%);
+        color: var(--green);
+      }
+      .gift-registry-card {
+        width: min(100%, 620px);
+        text-align: center;
+        padding: clamp(42px, 8vw, 72px) clamp(22px, 6vw, 54px);
+        border: 1px solid rgba(185, 150, 92, 0.34);
+        background: rgba(255, 250, 242, 0.82);
+        box-shadow: 0 24px 70px rgba(69, 54, 31, 0.14);
+        position: relative;
+        overflow: hidden;
+      }
+      .gift-registry-card:before,
+      .gift-registry-card:after {
+        content: "";
+        position: absolute;
+        width: 170px;
+        height: 170px;
+        border: 1px solid rgba(185, 150, 92, 0.24);
+        border-radius: 50%;
+      }
+      .gift-registry-card:before {
+        top: -110px;
+        left: -85px;
+      }
+      .gift-registry-card:after {
+        right: -85px;
+        bottom: -110px;
+      }
+      .gift-icon {
+        width: 52px;
+        height: 52px;
+        margin: 0 auto 18px;
+        color: var(--gold);
+      }
+      .gift-registry-card h2 {
+        font-family:
+          Pinyon Script,
+          Great Vibes,
+          cursive;
+        font-style: normal;
+        font-size: clamp(54px, 13vw, 78px);
+        line-height: 1;
+        color: var(--green-dark);
+        margin: 0 0 22px;
+      }
+      .gift-intro {
+        max-width: 490px;
+        margin: 0 auto 38px;
+        font-family:
+          Cormorant Garamond,
+          serif;
+        font-size: clamp(20px, 5vw, 27px);
+        line-height: 1.55;
+      }
+      .account-label {
+        margin-bottom: 12px;
+        font-family:
+          Cormorant Garamond,
+          serif;
+        font-size: 25px;
+        font-weight: 500;
+        color: var(--green-dark);
+      }
+      .account-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        width: 100%;
+        min-height: 78px;
+        padding: 18px;
+        border: 1px solid rgba(185, 150, 92, 0.4);
+        background: rgba(255, 255, 255, 0.64);
+        box-shadow: 0 12px 28px rgba(69, 54, 31, 0.1);
+      }
+      .account-number {
+        min-width: 0;
+        overflow-wrap: anywhere;
+        font-family:
+          ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: clamp(15px, 4vw, 21px);
+        letter-spacing: 0.4px;
+        color: var(--green-dark);
+      }
+      .copy-account {
+        flex: 0 0 auto;
+        display: grid;
+        place-items: center;
+        width: 44px;
+        height: 44px;
+        border: 0;
+        background: transparent;
+        color: var(--gold);
+        cursor: pointer;
+        border-radius: 50%;
+        transition:
+          background 0.25s ease,
+          transform 0.25s ease;
+      }
+      .copy-account:hover,
+      .copy-account:focus-visible {
+        background: rgba(185, 150, 92, 0.13);
+        transform: translateY(-1px);
+        outline: none;
+      }
+      .copy-feedback {
+        min-height: 22px;
+        margin-top: 12px;
+        font-size: 11px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--gold);
+      }
+      @media (max-width: 480px) {
+        .gift-registry-section {
+          padding: 0;
+        }
+        .gift-registry-card {
+          min-height: 100svh;
+          display: grid;
+          align-content: center;
+          border-left: 0;
+          border-right: 0;
+        }
+        .account-box {
+          align-items: center;
+        }
+      }
+
+      /* GIFT REGISTRY STYLE */
+      .gift-section {
+        min-height: 100svh;
+        background: #f7f1df;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 90px 35px;
+        position: relative;
+      }
+      .gift-icon {
+        font-size: 52px;
+        color: #bd9954;
+        margin-bottom: 28px;
+      }
+      .gift-section h2,
+      .gift-section h3 {
+        font-family: "Cormorant Garamond", serif;
+        font-style: italic;
+        font-weight: 300;
+        color: #263f32;
+      }
+      .gift-section h2 {
+        font-size: 76px;
+        margin: 0 0 50px;
+      }
+      .gift-section h3 {
+        font-size: 68px;
+        margin: 70px 0 40px;
+      }
+      .gift-text {
+        max-width: 650px;
+        font-family: "Cormorant Garamond", serif;
+        font-style: italic;
+        font-size: 30px;
+        line-height: 1.8;
+        color: #c39a57;
+      }
+      .bank-box {
+        width: min(720px, 90%);
+        background: #fffdf9;
+        border: 2px solid #e7d6b5;
+        padding: 24px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .bank-box span {
+        font-family: monospace;
+        font-size: 34px;
+        color: #263f32;
+      }
+      .bank-box button {
+        background: none;
+        border: 0;
+        color: #bd9954;
+        font-size: 40px;
+        cursor: pointer;
+      }
+      .gift-ornament {
+        width: 100%;
+        opacity: 0.16;
+        margin-top: 80px;
+      }
     </style>
 
     <style>
@@ -1202,6 +1408,608 @@
 
         .event-item {
           margin: 30px 0;
+        }
+      }
+
+      /* GIFT REGISTRY STYLE */
+      .gift-section {
+        min-height: 100svh;
+        background: #f7f1df;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 90px 35px;
+        position: relative;
+      }
+      .gift-icon {
+        font-size: 52px;
+        color: #bd9954;
+        margin-bottom: 28px;
+      }
+      .gift-section h2,
+      .gift-section h3 {
+        font-family: "Cormorant Garamond", serif;
+        font-style: italic;
+        font-weight: 300;
+        color: #263f32;
+      }
+      .gift-section h2 {
+        font-size: 76px;
+        margin: 0 0 50px;
+      }
+      .gift-section h3 {
+        font-size: 68px;
+        margin: 70px 0 40px;
+      }
+      .gift-text {
+        max-width: 650px;
+        font-family: "Cormorant Garamond", serif;
+        font-style: italic;
+        font-size: 30px;
+        line-height: 1.8;
+        color: #c39a57;
+      }
+      .bank-box {
+        width: min(720px, 90%);
+        background: #fffdf9;
+        border: 2px solid #e7d6b5;
+        padding: 24px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .bank-box span {
+        font-family: monospace;
+        font-size: 34px;
+        color: #263f32;
+      }
+      .bank-box button {
+        background: none;
+        border: 0;
+        color: #bd9954;
+        font-size: 40px;
+        cursor: pointer;
+      }
+      .gift-ornament {
+        width: 100%;
+        opacity: 0.16;
+        margin-top: 80px;
+      }
+    </style>
+
+    <style>
+      /* Gift Registry — dezelfde eenvoudige stijl als Save the Date */
+      .gift-registry-section {
+        min-height: 100svh !important;
+        display: flex !important;
+        align-items: flex-start !important;
+        justify-content: center !important;
+        padding: clamp(105px, 15svh, 170px) 24px 110px !important;
+        background: #f5f0e0 !important;
+        color: var(--green) !important;
+        text-align: center !important;
+        position: relative !important;
+      }
+
+      .gift-registry-card {
+        width: min(100%, 650px) !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+        border: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        overflow: visible !important;
+      }
+
+      .gift-registry-card::before,
+      .gift-registry-card::after,
+      .gift-icon {
+        display: none !important;
+      }
+
+      .gift-registry-card h2 {
+        margin: 0 0 clamp(62px, 9svh, 100px) !important;
+        font-family: "Cormorant Garamond", serif !important;
+        font-size: clamp(58px, 10vw, 82px) !important;
+        font-style: italic !important;
+        font-weight: 400 !important;
+        line-height: 1 !important;
+        color: var(--green) !important;
+      }
+
+      .gift-intro {
+        max-width: 570px !important;
+        margin: 0 auto clamp(78px, 11svh, 120px) !important;
+        font-family: "Cormorant Garamond", serif !important;
+        font-size: clamp(23px, 4.8vw, 33px) !important;
+        font-style: italic !important;
+        font-weight: 400 !important;
+        line-height: 1.55 !important;
+        color: var(--gold) !important;
+      }
+
+      .account-label {
+        margin: 0 0 28px !important;
+        font-family: "Cormorant Garamond", serif !important;
+        font-size: clamp(54px, 10vw, 76px) !important;
+        font-style: italic !important;
+        font-weight: 400 !important;
+        line-height: 1 !important;
+        color: var(--green) !important;
+      }
+
+      .account-box {
+        min-height: 0 !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 14px !important;
+        padding: 0 !important;
+        border: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+      }
+
+      .account-number {
+        font-family: "Cormorant Garamond", serif !important;
+        font-size: clamp(21px, 4.5vw, 31px) !important;
+        font-style: italic !important;
+        font-weight: 500 !important;
+        letter-spacing: 0.15px !important;
+        color: var(--gold) !important;
+        overflow-wrap: anywhere !important;
+      }
+
+      .copy-account {
+        padding: 5px !important;
+        color: var(--gold) !important;
+        background: transparent !important;
+        border: 0 !important;
+        box-shadow: none !important;
+      }
+
+      .copy-account svg {
+        width: 23px !important;
+        height: 23px !important;
+      }
+
+      .copy-feedback {
+        min-height: 20px !important;
+        margin-top: 13px !important;
+        color: var(--gold) !important;
+        font-family: "Cormorant Garamond", serif !important;
+        font-style: italic !important;
+        font-size: 16px !important;
+      }
+
+      @media (max-width: 480px) {
+        .gift-registry-section {
+          padding: 112px 22px 90px !important;
+        }
+
+        .gift-registry-card h2 {
+          margin-bottom: 72px !important;
+        }
+
+        .gift-intro {
+          margin-bottom: 88px !important;
+        }
+
+        .account-label {
+          margin-bottom: 25px !important;
+        }
+
+        .account-box {
+          gap: 9px !important;
+        }
+      }
+
+      /* GIFT REGISTRY STYLE */
+      .gift-section {
+        min-height: 100svh;
+        background: #f7f1df;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 90px 35px;
+        position: relative;
+      }
+      .gift-icon {
+        font-size: 52px;
+        color: #bd9954;
+        margin-bottom: 28px;
+      }
+      .gift-section h2,
+      .gift-section h3 {
+        font-family: "Cormorant Garamond", serif;
+        font-style: italic;
+        font-weight: 300;
+        color: #263f32;
+      }
+      .gift-section h2 {
+        font-size: 76px;
+        margin: 0 0 50px;
+      }
+      .gift-section h3 {
+        font-size: 68px;
+        margin: 70px 0 40px;
+      }
+      .gift-text {
+        max-width: 650px;
+        font-family: "Cormorant Garamond", serif;
+        font-style: italic;
+        font-size: 30px;
+        line-height: 1.8;
+        color: #c39a57;
+      }
+      .bank-box {
+        width: min(720px, 90%);
+        background: #fffdf9;
+        border: 2px solid #e7d6b5;
+        padding: 24px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .bank-box span {
+        font-family: monospace;
+        font-size: 34px;
+        color: #263f32;
+      }
+      .bank-box button {
+        background: none;
+        border: 0;
+        color: #bd9954;
+        font-size: 40px;
+        cursor: pointer;
+      }
+      .gift-ornament {
+        width: 100%;
+        opacity: 0.16;
+        margin-top: 80px;
+      }
+    </style>
+
+    <style>
+      /* FINAL GIFT REGISTRY DESIGN — gift icon, warm background and framed IBAN */
+      .gift-registry-section {
+        min-height: 100svh !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: clamp(70px, 9svh, 110px) 24px clamp(135px, 17svh, 210px) !important;
+        position: relative !important;
+        overflow: hidden !important;
+        isolation: isolate !important;
+        text-align: center !important;
+        color: var(--green) !important;
+        background:
+          linear-gradient(rgba(255, 250, 240, 0.76), rgba(250, 243, 229, 0.84)),
+          repeating-linear-gradient(
+            -28deg,
+            rgba(186, 151, 94, 0.055) 0,
+            rgba(186, 151, 94, 0.055) 2px,
+            transparent 2px,
+            transparent 34px
+          ),
+          radial-gradient(
+            ellipse at 50% 8%,
+            #fffdf8 0%,
+            #f8f0e1 48%,
+            #eadbc0 100%
+          ) !important;
+      }
+
+      .gift-registry-section::before {
+        content: "" !important;
+        display: block !important;
+        position: absolute !important;
+        inset: 0 !important;
+        z-index: -2 !important;
+        pointer-events: none !important;
+        background:
+          radial-gradient(
+            ellipse at 50% 0%,
+            rgba(255, 255, 255, 0.88),
+            transparent 44%
+          ),
+          linear-gradient(
+            115deg,
+            transparent 0 36%,
+            rgba(255, 255, 255, 0.34) 46%,
+            transparent 58%
+          ) !important;
+        opacity: 0.85 !important;
+      }
+
+      .gift-registry-section::after {
+        content: "" !important;
+        display: block !important;
+        position: absolute !important;
+        left: 50% !important;
+        bottom: -26px !important;
+        width: min(980px, 125vw) !important;
+        height: 190px !important;
+        transform: translateX(-50%) !important;
+        z-index: -1 !important;
+        pointer-events: none !important;
+        opacity: 0.17 !important;
+        background: center bottom / contain no-repeat
+          url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 210'%3E%3Cg fill='none' stroke='%23b99562' stroke-width='2.4' opacity='.95'%3E%3Cpath d='M0 190c115-58 184-35 246-4 54 27 102 14 139-26 42-45 67-91 115-125 48 34 73 80 115 125 37 40 85 53 139 26 62-31 131-54 246 4'/%3E%3Cpath d='M500 35c-19 20-33 45-37 76 22-17 35-37 37-76Zm0 0c19 20 33 45 37 76-22-17-35-37-37-76Z'/%3E%3Cpath d='M456 109c-35-28-67-29-104-12 33 8 59 27 74 57-38-26-77-28-116-8 37 7 69 28 91 61M544 109c35-28 67-29 104-12-33 8-59 27-74 57 38-26 77-28 116-8-37 7-69 28-91 61'/%3E%3Cpath d='M466 105c-13 42 0 71 34 94 34-23 47-52 34-94M420 150c-19-24-42-35-72-32 21 14 35 35 40 63M580 150c19-24 42-35 72-32-21 14-35 35-40 63'/%3E%3Cpath d='M296 160c-34-25-72-28-113-11 35 10 60 30 77 59M704 160c34-25 72-28 113-11-35 10-60 30-77 59'/%3E%3C/g%3E%3C/svg%3E") !important;
+      }
+
+      .gift-registry-card {
+        width: min(100%, 760px) !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+        border: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        overflow: visible !important;
+        position: relative !important;
+        z-index: 1 !important;
+      }
+
+      .gift-registry-card::before,
+      .gift-registry-card::after {
+        display: none !important;
+      }
+
+      .gift-icon {
+        display: block !important;
+        width: clamp(54px, 8vw, 72px) !important;
+        height: auto !important;
+        margin: 0 auto clamp(28px, 4svh, 42px) !important;
+        color: var(--gold) !important;
+        filter: drop-shadow(0 4px 8px rgba(116, 84, 35, 0.08));
+      }
+
+      .gift-registry-card h2 {
+        margin: 0 0 clamp(54px, 8svh, 86px) !important;
+        font-family: "Cormorant Garamond", serif !important;
+        font-size: clamp(62px, 11vw, 92px) !important;
+        font-style: italic !important;
+        font-weight: 400 !important;
+        line-height: 0.98 !important;
+        color: var(--green) !important;
+      }
+
+      .gift-intro {
+        max-width: 650px !important;
+        margin: 0 auto clamp(68px, 10svh, 105px) !important;
+        font-family: "Cormorant Garamond", serif !important;
+        font-size: clamp(24px, 4.6vw, 34px) !important;
+        font-style: italic !important;
+        font-weight: 400 !important;
+        line-height: 1.55 !important;
+        color: var(--gold) !important;
+      }
+
+      .account-label {
+        margin: 0 0 clamp(30px, 4svh, 42px) !important;
+        font-family: "Cormorant Garamond", serif !important;
+        font-size: clamp(56px, 10vw, 82px) !important;
+        font-style: normal !important;
+        font-weight: 400 !important;
+        line-height: 1 !important;
+        color: var(--green) !important;
+      }
+
+      .account-box {
+        width: min(100%, 730px) !important;
+        min-height: 128px !important;
+        margin: 0 auto !important;
+        padding: 26px clamp(22px, 5vw, 42px) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 18px !important;
+        border: 2px solid rgba(185, 150, 92, 0.38) !important;
+        background: rgba(255, 253, 248, 0.38) !important;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.4) !important;
+      }
+
+      .account-number {
+        min-width: 0 !important;
+        font-family: "Cormorant Garamond", serif !important;
+        font-size: clamp(20px, 4.1vw, 32px) !important;
+        font-style: normal !important;
+        font-weight: 500 !important;
+        letter-spacing: 0.4px !important;
+        color: var(--green) !important;
+        overflow-wrap: anywhere !important;
+      }
+
+      .copy-account {
+        flex: 0 0 auto !important;
+        width: 48px !important;
+        height: 48px !important;
+        padding: 7px !important;
+        display: grid !important;
+        place-items: center !important;
+        color: var(--gold) !important;
+        background: transparent !important;
+        border: 0 !important;
+        border-radius: 50% !important;
+        box-shadow: none !important;
+      }
+
+      .copy-account svg {
+        width: 31px !important;
+        height: 31px !important;
+      }
+
+      .copy-account:hover,
+      .copy-account:focus-visible {
+        background: rgba(185, 150, 92, 0.11) !important;
+        transform: translateY(-1px) !important;
+        outline: none !important;
+      }
+
+      .copy-feedback {
+        min-height: 24px !important;
+        margin-top: 14px !important;
+        color: var(--gold) !important;
+        font-family: "Cormorant Garamond", serif !important;
+        font-size: 17px !important;
+        font-style: italic !important;
+        letter-spacing: 0.3px !important;
+        text-transform: none !important;
+      }
+
+      @media (max-width: 480px) {
+        .gift-registry-section {
+          align-items: flex-start !important;
+          padding: 80px 20px 150px !important;
+        }
+
+        .gift-icon {
+          width: 55px !important;
+          margin-bottom: 30px !important;
+        }
+
+        .gift-registry-card h2 {
+          margin-bottom: 58px !important;
+        }
+
+        .gift-intro {
+          margin-bottom: 72px !important;
+          line-height: 1.5 !important;
+        }
+
+        .account-label {
+          margin-bottom: 30px !important;
+        }
+
+        .account-box {
+          min-height: 108px !important;
+          padding: 22px 18px !important;
+          gap: 10px !important;
+        }
+
+        .account-number {
+          font-size: clamp(17px, 5.1vw, 23px) !important;
+        }
+
+        .copy-account {
+          width: 42px !important;
+          height: 42px !important;
+          padding: 6px !important;
+        }
+
+        .copy-account svg {
+          width: 27px !important;
+          height: 27px !important;
+        }
+
+        .gift-registry-section::after {
+          width: 145vw !important;
+          height: 145px !important;
+        }
+      }
+    </style>
+
+    <style>
+      /* Gift Registry — kleinere tekst, met hetzelfde Cormorant Garamond-lettertype als de website */
+      .gift-registry-section,
+      .gift-registry-section button {
+        font-family: "Cormorant Garamond", serif !important;
+      }
+
+      .gift-registry-section {
+        padding-top: clamp(46px, 6svh, 70px) !important;
+      }
+
+      .gift-icon {
+        width: clamp(38px, 5vw, 50px) !important;
+        margin-bottom: clamp(16px, 2.2svh, 23px) !important;
+      }
+
+      .gift-registry-card h2 {
+        font-family: "Cormorant Garamond", serif !important;
+        font-size: clamp(40px, 6.5vw, 58px) !important;
+        font-style: italic !important;
+        font-weight: 400 !important;
+        line-height: 1 !important;
+        margin-bottom: clamp(28px, 4.5svh, 45px) !important;
+      }
+
+      .gift-intro {
+        font-family: "Cormorant Garamond", serif !important;
+        font-size: clamp(16px, 2.5vw, 21px) !important;
+        line-height: 1.55 !important;
+        max-width: 520px !important;
+        margin-bottom: clamp(38px, 5.5svh, 58px) !important;
+      }
+
+      .account-label {
+        font-family: "Cormorant Garamond", serif !important;
+        font-size: clamp(32px, 5.5vw, 46px) !important;
+        font-weight: 400 !important;
+        margin-bottom: clamp(18px, 2.5svh, 26px) !important;
+      }
+
+      .account-box {
+        min-height: 92px !important;
+        padding: 16px clamp(16px, 3vw, 28px) !important;
+      }
+
+      .account-number {
+        font-family: "Cormorant Garamond", serif !important;
+        font-size: clamp(28px, 6vw, 40px) !important;
+        font-weight: 500 !important;
+        line-height: 1 !important;
+        letter-spacing: 0 !important;
+        color: var(--green) !important;
+      }
+
+      .copy-account {
+        width: 38px !important;
+        height: 38px !important;
+      }
+
+      .copy-account svg {
+        width: 24px !important;
+        height: 24px !important;
+      }
+
+      .copy-feedback {
+        font-family: "Cormorant Garamond", serif !important;
+        font-size: 15px !important;
+      }
+
+      @media (max-width: 480px) {
+        .gift-registry-section {
+          padding: 46px 18px 115px !important;
+          justify-content: flex-start !important;
+        }
+
+        .gift-registry-card h2 {
+          font-size: clamp(38px, 11vw, 48px) !important;
+          margin-bottom: 28px !important;
+        }
+
+        .gift-intro {
+          font-size: clamp(15px, 4.7vw, 18px) !important;
+          margin-bottom: 38px !important;
+        }
+
+        .account-label {
+          font-size: clamp(30px, 9vw, 38px) !important;
+          margin-bottom: 18px !important;
+        }
+
+        .account-box {
+          min-height: 82px !important;
+          padding: 14px 15px !important;
+        }
+
+        .account-number {
+          font-size: clamp(22px, 6.5vw, 30px) !important;
         }
       }
     </style>
@@ -1299,6 +2107,72 @@
         </div>
         <div class="countdown-message">We are waiting for you...</div>
       </section>
+
+      <section
+        class="gift-registry-section reveal"
+        aria-labelledby="gift-title"
+      >
+        <div class="gift-registry-card">
+          <svg class="gift-icon" viewBox="0 0 64 64" aria-hidden="true">
+            <path
+              d="M9 25h46v10H9zM14 35h36v22H14zM29 25v32M35 25v32"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3.2"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M32 25c-8-2-12-6-10-11 2-5 9-3 10 5 1-8 8-10 10-5 2 5-2 9-10 11Z"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3.2"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <h2 id="gift-title">Gift Registry</h2>
+          <p class="gift-intro">
+            We're so excited to celebrate this special day with you. For those
+            who wish, a wedding registry is available
+          </p>
+          <div class="account-label">Bank Account</div>
+          <div class="account-box">
+            <span class="account-number" id="gift-account"
+              >AE830200000031501547001</span
+            >
+            <button
+              class="copy-account"
+              type="button"
+              aria-label="Copy bank account number"
+              data-copy-account
+            >
+              <svg
+                width="27"
+                height="27"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <rect
+                  x="8"
+                  y="8"
+                  width="11"
+                  height="13"
+                  rx="1.5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                />
+                <path
+                  d="M16 8V5.5A1.5 1.5 0 0 0 14.5 4h-9A1.5 1.5 0 0 0 4 5.5v12A1.5 1.5 0 0 0 5.5 19H8"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                />
+              </svg>
+            </button>
+          </div>
+          <div class="copy-feedback" aria-live="polite"></div>
+        </div>
+      </section>
     </main>
     <script>
       const cover = document.getElementById("cover"),
@@ -1336,6 +2210,33 @@
         m.textContent = Math.floor((diff % 36e5) / 6e4);
         s.textContent = Math.floor((diff % 6e4) / 1e3);
       }
+
+      document.addEventListener("click", async (event) => {
+        const button = event.target.closest("[data-copy-account]");
+        if (!button) return;
+        const account = document
+          .getElementById("gift-account")
+          .textContent.trim();
+        const feedback = button
+          .closest(".gift-registry-card")
+          .querySelector(".copy-feedback");
+        try {
+          await navigator.clipboard.writeText(account);
+          feedback.textContent = "Account number copied";
+        } catch (error) {
+          const field = document.createElement("textarea");
+          field.value = account;
+          field.setAttribute("readonly", "");
+          field.style.position = "fixed";
+          field.style.opacity = "0";
+          document.body.appendChild(field);
+          field.select();
+          document.execCommand("copy");
+          field.remove();
+          feedback.textContent = "Account number copied";
+        }
+        setTimeout(() => (feedback.textContent = ""), 2500);
+      });
     </script>
   </body>
 </html>
