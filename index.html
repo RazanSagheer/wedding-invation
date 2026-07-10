@@ -1151,6 +1151,59 @@
         font-size: 13px !important;
         line-height: 1.45 !important;
       }
+
+      /* SAVE THE DATE DETAILS */
+      .save-date-section h2,
+      .save-date-section .event-label {
+        color: var(--green);
+      }
+
+      .save-date-section h2 {
+        margin-bottom: 38px;
+      }
+
+      .event-details {
+        width: min(100%, 620px);
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .event-item {
+        margin: 34px 0;
+      }
+
+      .event-label {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(42px, 10vw, 64px);
+        font-weight: 400;
+        line-height: 1;
+        font-style: italic;
+      }
+
+      .event-value {
+        margin-top: 10px;
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(20px, 5.5vw, 32px);
+        font-weight: 400;
+        line-height: 1.45;
+        color: var(--gold);
+        font-style: italic;
+      }
+
+      @media (max-width: 480px) {
+        .save-date-section {
+          padding-top: 64px;
+          padding-bottom: 64px;
+        }
+
+        .save-date-section h2 {
+          margin-bottom: 30px;
+        }
+
+        .event-item {
+          margin: 30px 0;
+        }
+      }
     </style>
   </head>
   <body>
@@ -1195,17 +1248,32 @@
           </div>
         </div>
       </section>
-      <section class="section cream reveal">
+      <section class="section cream reveal save-date-section">
         <h2>Save the Date</h2>
-        <div class="small">Thursday, 13 August 2026</div>
-        <p>Ceremony begins at 19:00 at Venezia Gardens, Faitroun, Lebanon.</p>
+
+        <div class="event-details">
+          <div class="event-item">
+            <div class="event-value">Thursday, 13 August 2026</div>
+          </div>
+
+          <div class="event-item">
+            <div class="event-label">Time</div>
+            <div class="event-value">19:00</div>
+          </div>
+
+          <div class="event-item">
+            <div class="event-label">Location</div>
+            <div class="event-value">
+              Venezia Gardens,<br />
+              Faitroun, Lebanon
+            </div>
+          </div>
+        </div>
       </section>
       <section class="section beige reveal">
         <h2>Location</h2>
         <div class="small">Venezia Gardens</div>
-        <p>
-          Faitroun, Lebanon
-        </p>
+        <p>Faitroun, Lebanon</p>
         <a
           href="https://www.google.com/maps?q=Venezia+Gardens,+Aajaltoun+-+Faraiya+Rd,+Faitroun&amp;ftid=0x151f48a8e7220251:0x85744c29827ea008&amp;entry=gps&amp;shh=CAE&amp;lucs=,94297699,94231188,94280568,47071704,94218641,94282134,100813464,94286869&amp;g_ep=CAISEjI2LjE2LjAuODk4OTU0MjE1MBgAINeCAypJLDk0Mjk3Njk5LDk0MjMxMTg4LDk0MjgwNTY4LDQ3MDcxNzA0LDk0MjE4NjQxLDk0MjgyMTM0LDEwMDgxMzQ2NCw5NDI4Njg2OUICTEI%3D&amp;skid=6571935f-ce20-4f33-aef6-1ab8ae833639&amp;g_st=ic"
           target="_blank"
