@@ -1324,24 +1324,24 @@
         color: #c39a57;
       }
       .bank-box {
-        width: min(720px, 90%);
+        width: min(650px, 82%);
         background: #fffdf9;
         border: 2px solid #e7d6b5;
-        padding: 24px 30px;
+        padding: 18px 24px;
         display: flex;
         justify-content: space-between;
         align-items: center;
       }
       .bank-box span {
         font-family: monospace;
-        font-size: 34px;
+        font-size: 30px;
         color: #263f32;
       }
       .bank-box button {
         background: none;
         border: 0;
         color: #bd9954;
-        font-size: 40px;
+        font-size: 34px;
         cursor: pointer;
       }
       .gift-ornament {
@@ -1452,24 +1452,24 @@
         color: #c39a57;
       }
       .bank-box {
-        width: min(720px, 90%);
+        width: min(650px, 82%);
         background: #fffdf9;
         border: 2px solid #e7d6b5;
-        padding: 24px 30px;
+        padding: 18px 24px;
         display: flex;
         justify-content: space-between;
         align-items: center;
       }
       .bank-box span {
         font-family: monospace;
-        font-size: 34px;
+        font-size: 30px;
         color: #263f32;
       }
       .bank-box button {
         background: none;
         border: 0;
         color: #bd9954;
-        font-size: 40px;
+        font-size: 34px;
         cursor: pointer;
       }
       .gift-ornament {
@@ -1647,24 +1647,24 @@
         color: #c39a57;
       }
       .bank-box {
-        width: min(720px, 90%);
+        width: min(650px, 82%);
         background: #fffdf9;
         border: 2px solid #e7d6b5;
-        padding: 24px 30px;
+        padding: 18px 24px;
         display: flex;
         justify-content: space-between;
         align-items: center;
       }
       .bank-box span {
         font-family: monospace;
-        font-size: 34px;
+        font-size: 30px;
         color: #263f32;
       }
       .bank-box button {
         background: none;
         border: 0;
         color: #bd9954;
-        font-size: 40px;
+        font-size: 34px;
         cursor: pointer;
       }
       .gift-ornament {
@@ -1982,6 +1982,10 @@
         font-size: 15px !important;
       }
 
+      .wish-label {
+        margin-top: clamp(30px, 4.5svh, 46px) !important;
+      }
+
       @media (max-width: 480px) {
         .gift-registry-section {
           padding: 46px 18px 115px !important;
@@ -2010,6 +2014,53 @@
 
         .account-number {
           font-size: clamp(20px, 5.5vw, 30px) !important;
+        }
+      }
+    </style>
+
+    <style>
+      /* DEFINITIEVE OVERRIDE — compactere Bank Account- en Wish Account-boxen */
+      .gift-registry-section .account-box {
+        width: min(82%, 620px) !important;
+        min-height: 66px !important;
+        padding: 10px 20px !important;
+        gap: 12px !important;
+      }
+
+      .gift-registry-section .account-number {
+        font-size: clamp(22px, 4.8vw, 32px) !important;
+      }
+
+      .gift-registry-section .copy-account {
+        width: 34px !important;
+        height: 34px !important;
+        padding: 5px !important;
+      }
+
+      .gift-registry-section .copy-account svg {
+        width: 22px !important;
+        height: 22px !important;
+      }
+
+      @media (max-width: 480px) {
+        .gift-registry-section .account-box {
+          width: 86% !important;
+          min-height: 58px !important;
+          padding: 8px 14px !important;
+        }
+
+        .gift-registry-section .account-number {
+          font-size: clamp(18px, 5vw, 23px) !important;
+        }
+
+        .gift-registry-section .copy-account {
+          width: 30px !important;
+          height: 30px !important;
+        }
+
+        .gift-registry-section .copy-account svg {
+          width: 20px !important;
+          height: 20px !important;
         }
       }
     </style>
@@ -2171,6 +2222,42 @@
             </button>
           </div>
           <div class="copy-feedback" aria-live="polite"></div>
+
+          <div class="account-label wish-label">Wish Account</div>
+          <div class="account-box">
+            <span class="account-number" id="wish-account">30592172-03</span>
+            <button
+              class="copy-account"
+              type="button"
+              aria-label="Copy Wish account number"
+              data-copy-account
+            >
+              <svg
+                width="27"
+                height="27"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <rect
+                  x="8"
+                  y="8"
+                  width="11"
+                  height="13"
+                  rx="1.5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                />
+                <path
+                  d="M16 8V5.5A1.5 1.5 0 0 0 14.5 4h-9A1.5 1.5 0 0 0 4 5.5v12A1.5 1.5 0 0 0 5.5 19H8"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                />
+              </svg>
+            </button>
+          </div>
+          <div class="copy-feedback" aria-live="polite"></div>
         </div>
       </section>
     </main>
@@ -2214,12 +2301,11 @@
       document.addEventListener("click", async (event) => {
         const button = event.target.closest("[data-copy-account]");
         if (!button) return;
-        const account = document
-          .getElementById("gift-account")
+        const accountBox = button.closest(".account-box");
+        const account = accountBox
+          .querySelector(".account-number")
           .textContent.trim();
-        const feedback = button
-          .closest(".gift-registry-card")
-          .querySelector(".copy-feedback");
+        const feedback = accountBox.nextElementSibling;
         try {
           await navigator.clipboard.writeText(account);
           feedback.textContent = "Account number copied";
