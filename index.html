@@ -6,6 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, viewport-fit=cover"
     />
+    <meta name="format-detection" content="telephone=no" />
     <title>Mostafa & Shahed — 13 August 2026</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -1349,6 +1350,13 @@
         opacity: 0.16;
         margin-top: 80px;
       }
+
+      a[x-apple-data-detectors],
+      a[href^="tel"] {
+        color: inherit !important;
+        text-decoration: none !important;
+        font: inherit !important;
+      }
     </style>
 
     <style>
@@ -2003,7 +2011,7 @@
         }
 
         .account-label {
-          font-size: clamp(20px, 5vw, 38px) !important;
+          font-size: clamp(20px, 7vw, 38px) !important;
           margin-bottom: 18px !important;
         }
 
